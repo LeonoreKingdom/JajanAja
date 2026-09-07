@@ -1,0 +1,437 @@
+{
+  ".claude/skills/ngodingpakeai/SKILL.md": {
+    "summary": "Dokumentasi instruksi skill agent NgodingPakeAI untuk sinkronisasi konteks proyek dan manajemen task."
+  },
+  ".codex/skills/ngodingpakeai/SKILL.md": {
+    "summary": "Dokumentasi instruksi skill agent NgodingPakeAI untuk sinkronisasi konteks proyek dan manajemen task."
+  },
+  ".gitattributes": {
+    "summary": "Konfigurasi Git attributes untuk normalisasi line endings dan penanganan file di repositori."
+  },
+  ".ngodingpakeaiignore": {
+    "summary": "Konfigurasi daftar pengecualian file dan direktori yang diabaikan saat pemindaian konteks NgodingPakeAI."
+  },
+  "AGENTS.md": {
+    "summary": "Panduan integrasi agen AI untuk sinkronisasi konteks dan alur kerja task manajemen NgodingPakeAI."
+  },
+  "next-env.d.ts": {
+    "summary": "File deklarasi TypeScript otomatis dari Next.js untuk tipe build dan modul environment."
+  },
+  "next.config.ts": {
+    "summary": "Konfigurasi Next.js untuk bundling, routing, dan pengaturan runtime aplikasi JajanAja."
+  },
+  "package-lock.json": {
+    "summary": "Lockfile npm yang mengunci versi dependency pohon modul untuk reproduktibilitas build."
+  },
+  "package.json": {
+    "summary": "Manifest proyek npm mendefinisikan dependensi Next.js, React, Lucide, Tailwind, dan script build/dev."
+  },
+  "postcss.config.mjs": {
+    "summary": "Konfigurasi PostCSS untuk integrasi Tailwind CSS pada proses build styling Next.js."
+  },
+  "README.md": {
+    "summary": "Dokumentasi dasar repositori aplikasi financial tracking JajanAja."
+  },
+  "src/app/api/aset/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/aset (operasi RESTful modul terkait)."
+  },
+  "src/app/api/aset/[id]/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/aset/[id] (operasi RESTful modul terkait)."
+  },
+  "src/app/api/aset/[id]/saldo/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/aset/[id]/saldo (operasi RESTful modul terkait)."
+  },
+  "src/app/api/bagi-tagihan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/bagi-tagihan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/bagi-tagihan/transaksi/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/bagi-tagihan/transaksi (operasi RESTful modul terkait)."
+  },
+  "src/app/api/bagi-tagihan/[id]/peserta/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/bagi-tagihan/[id]/peserta (operasi RESTful modul terkait)."
+  },
+  "src/app/api/bagi-tagihan/[id]/peserta/[pesertaId]/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/bagi-tagihan/[id]/peserta/[pesertaId] (operasi RESTful modul terkait)."
+  },
+  "src/app/api/bagi-tagihan/[id]/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/bagi-tagihan/[id] (operasi RESTful modul terkait)."
+  },
+  "src/app/api/budget/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/budget (operasi RESTful modul terkait)."
+  },
+  "src/app/api/budget/[id]/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/budget/[id] (operasi RESTful modul terkait)."
+  },
+  "src/app/api/dashboard/grafik-harian/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/dashboard/grafik-harian (operasi RESTful modul terkait)."
+  },
+  "src/app/api/dashboard/ringkasan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/dashboard/ringkasan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/dashboard/transaksi-terbaru/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/dashboard/transaksi-terbaru (operasi RESTful modul terkait)."
+  },
+  "src/app/api/kategori/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/kategori (operasi RESTful modul terkait)."
+  },
+  "src/app/api/koneksi-whatsapp/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/koneksi-whatsapp (operasi RESTful modul terkait)."
+  },
+  "src/app/api/levina/chat/context/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/levina/chat/context (operasi RESTful modul terkait)."
+  },
+  "src/app/api/levina/chat/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/levina/chat (operasi RESTful modul terkait)."
+  },
+  "src/app/api/levina/intent/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/levina/intent (operasi RESTful modul terkait)."
+  },
+  "src/app/api/levina/panduan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/levina/panduan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/levina/qa/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/levina/qa (operasi RESTful modul terkait)."
+  },
+  "src/app/api/levina/saran-hemat/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/levina/saran-hemat (operasi RESTful modul terkait)."
+  },
+  "src/app/api/pindai-struk/kategori-otomatis/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/pindai-struk/kategori-otomatis (operasi RESTful modul terkait)."
+  },
+  "src/app/api/pindai-struk/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/pindai-struk (operasi RESTful modul terkait)."
+  },
+  "src/app/api/pindai-struk/scan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/pindai-struk/scan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/pindai-struk/simpan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/pindai-struk/simpan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/transaksi/pengeluaran/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/transaksi/pengeluaran (operasi RESTful modul terkait)."
+  },
+  "src/app/api/transaksi/pilihan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/transaksi/pilihan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/transaksi/ringkasan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/transaksi/ringkasan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/transaksi/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/transaksi (operasi RESTful modul terkait)."
+  },
+  "src/app/api/transaksi/[id]/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/transaksi/[id] (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/auto-reply/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp/auto-reply (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/balasan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp/balasan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/koneksi/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp/koneksi (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/parse/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp/parse (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/parser/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp/parser (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/simpan/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp/simpan (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/transaksi/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp/transaksi (operasi RESTful modul terkait)."
+  },
+  "src/app/api/whatsapp/webhook/route.ts": {
+    "summary": "Endpoint API handler Next.js untuk route /api/whatsapp/webhook (operasi RESTful modul terkait)."
+  },
+  "src/app/asetku/page.tsx": {
+    "summary": "Halaman manajemen kantong keuangan Asetku: daftar rekening, e-wallet, uang tunai, dan penyesuaian saldo."
+  },
+  "src/app/bagi-tagihan/baru/page.tsx": {
+    "summary": "Halaman pembuatan Bagi Tagihan baru: input nama teman, pilih transaksi atau nominal baru, dan opsi pembagian."
+  },
+  "src/app/bagi-tagihan/page.tsx": {
+    "summary": "Halaman daftar Bagi Tagihan (split bill) aktif, total patungan, dan status pelunasan teman."
+  },
+  "src/app/bagi-tagihan/[id]/page.tsx": {
+    "summary": "Halaman detail Bagi Tagihan: rincian porsi bayar per peserta, toggle status lunas, dan bagikan rincian ke WhatsApp."
+  },
+  "src/app/budgetin/page.tsx": {
+    "summary": "Halaman pos anggaran Budgetin: pengaturan limit bulanan per pos belanja dan monitor persentase pemakaian."
+  },
+  "src/app/globals.css": {
+    "summary": "Berkas stylesheet global Tailwind CSS yang mendefinisikan theme warna, utility classes, dan styling dasar."
+  },
+  "src/app/koneksi-whatsapp/page.tsx": {
+    "summary": "Halaman integrasi Catat via WhatsApp: formulir tautkan nomor, status koneksi bot, dan simulasi chat pesan transaksi."
+  },
+  "src/app/layout.tsx": {
+    "summary": "Root layout Next.js aplikasi JajanAja dengan font Plus Jakarta Sans dan konfigurasi viewport mobile."
+  },
+  "src/app/levina/page.tsx": {
+    "summary": "Halaman chatbot interaktif maskot finansial LEVINA dengan fitur Q&A data transaksi, saran hemat, dan panduan fitur."
+  },
+  "src/app/page.tsx": {
+    "summary": "Halaman dashboard utama JajanAja menampilkan ringkasan saldo, grafik arus kas, budget, dan akses fitur cepat."
+  },
+  "src/app/pindai-struk/page.tsx": {
+    "summary": "Halaman Pindai Struk OCR: upload foto struk fisik belanja, review item otomatis, dan simpan transaksi."
+  },
+  "src/app/transaksi/page.tsx": {
+    "summary": "Halaman manajemen transaksi: formulir catat JajanAja & NabungAja, riwayat mutasi, filter tanggal, dan tag."
+  },
+  "src/app/whatsapp/page.tsx": {
+    "summary": "Halaman integrasi Catat via WhatsApp: formulir tautkan nomor, status koneksi bot, dan simulasi chat pesan transaksi."
+  },
+  "src/components/asetku/AssetCard.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk AssetCard."
+  },
+  "src/components/asetku/CreateAssetModal.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk CreateAssetModal."
+  },
+  "src/components/asetku/EditAssetBalanceModal.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk EditAssetBalanceModal."
+  },
+  "src/components/asetku/TotalAssetOverview.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk TotalAssetOverview."
+  },
+  "src/components/bagi-tagihan/CreateSplitBillForm.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk CreateSplitBillForm."
+  },
+  "src/components/bagi-tagihan/SplitBillDetailModal.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk SplitBillDetailModal."
+  },
+  "src/components/budget/BudgetAlertSummary.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk BudgetAlertSummary."
+  },
+  "src/components/budget/BudgetCategoryCard.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk BudgetCategoryCard."
+  },
+  "src/components/budget/BudgetOverviewCard.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk BudgetOverviewCard."
+  },
+  "src/components/budget/CreateBudgetModal.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk CreateBudgetModal."
+  },
+  "src/components/budget/EditBudgetModal.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk EditBudgetModal."
+  },
+  "src/components/common/IconHelper.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk IconHelper."
+  },
+  "src/components/dashboard/AssetSummary.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk AssetSummary."
+  },
+  "src/components/dashboard/BudgetOverview.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk BudgetOverview."
+  },
+  "src/components/dashboard/FinancialConditionSummary.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk FinancialConditionSummary."
+  },
+  "src/components/dashboard/Header.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk Header."
+  },
+  "src/components/dashboard/LevinaChatModal.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk LevinaChatModal."
+  },
+  "src/components/dashboard/LevinaInsightCard.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk LevinaInsightCard."
+  },
+  "src/components/dashboard/MonthlyFinancialChart.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk MonthlyFinancialChart."
+  },
+  "src/components/dashboard/QuickActions.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk QuickActions."
+  },
+  "src/components/dashboard/RecentTransactions.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk RecentTransactions."
+  },
+  "src/components/dashboard/SummaryCards.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk SummaryCards."
+  },
+  "src/components/dashboard/TransactionModal.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk TransactionModal."
+  },
+  "src/components/layout/BottomNav.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk BottomNav."
+  },
+  "src/components/pindai-struk/ReceiptCameraScanner.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk ReceiptCameraScanner."
+  },
+  "src/components/pindai-struk/ReceiptPreview.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk ReceiptPreview."
+  },
+  "src/components/pindai-struk/ReceiptUploadZone.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk ReceiptUploadZone."
+  },
+  "src/components/pindai-struk/ReceiptVerificationView.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk ReceiptVerificationView."
+  },
+  "src/components/transaction/ExpenseForm.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk ExpenseForm."
+  },
+  "src/components/transaction/IncomeForm.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk IncomeForm."
+  },
+  "src/components/transaction/OptionalDetailsSection.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk OptionalDetailsSection."
+  },
+  "src/components/transaction/RunningMonthSummary.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk RunningMonthSummary."
+  },
+  "src/components/transaction/TransactionDetailModal.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk TransactionDetailModal."
+  },
+  "src/components/transaction/TransactionHistoryList.tsx": {
+    "summary": "Komponen antarmuka pengguna UI untuk TransactionHistoryList."
+  },
+  "src/context/TransactionContext.tsx": {
+    "summary": "Modul berkas pendukung TransactionContext.tsx dalam aplikasi JajanAja Teman Finansial."
+  },
+  "src/lib/levina-chat-service.ts": {
+    "summary": "Modul utilitas, helper client-side, atau data mock untuk levina-chat-service."
+  },
+  "src/lib/mock-data.ts": {
+    "summary": "Modul utilitas, helper client-side, atau data mock untuk mock-data."
+  },
+  "src/lib/mock-levina.ts": {
+    "summary": "Modul utilitas, helper client-side, atau data mock untuk mock-levina."
+  },
+  "src/lib/mock-receipts.ts": {
+    "summary": "Modul utilitas, helper client-side, atau data mock untuk mock-receipts."
+  },
+  "src/lib/mock-split-bills.ts": {
+    "summary": "Modul utilitas, helper client-side, atau data mock untuk mock-split-bills."
+  },
+  "src/lib/split-bill-storage.ts": {
+    "summary": "Modul utilitas, helper client-side, atau data mock untuk split-bill-storage."
+  },
+  "src/lib/utils.ts": {
+    "summary": "Modul utilitas, helper client-side, atau data mock untuk utils."
+  },
+  "src/server/db/migrations/001_create_kategori_dan_transaksi.sql": {
+    "summary": "Skrip migrasi SQL DDL untuk tabel transaksi keuangan dengan tipe pengeluaran/pemasukan dan referensi kategori/aset."
+  },
+  "src/server/db/migrations/002_create_budget_table.sql": {
+    "summary": "Skrip migrasi SQL DDL untuk tabel alokasi pos anggaran (budget) bulanan dan pelacakan limit."
+  },
+  "src/server/db/migrations/003_create_aset_table.sql": {
+    "summary": "Skrip migrasi SQL DDL skema database 003_create_aset_table.sql."
+  },
+  "src/server/db/migrations/004_create_riwayat_pindai_struk.sql": {
+    "summary": "Skrip migrasi SQL DDL untuk tabel riwayat pindai struk dan deteksi item belanja OCR."
+  },
+  "src/server/db/migrations/005_create_bagi_tagihan_dan_peserta.sql": {
+    "summary": "Skrip migrasi SQL DDL untuk tabel bagi tagihan (split bill) dan rincian peserta patungan."
+  },
+  "src/server/db/migrations/006_create_nomor_whatsapp_pengguna.sql": {
+    "summary": "Skrip migrasi SQL DDL untuk tabel koneksi nomor WhatsApp pengguna dan log pesan webhook."
+  },
+  "src/server/db/migrations/007_create_riwayat_percakapan_levina.sql": {
+    "summary": "Skrip migrasi SQL DDL untuk tabel riwayat percakapan chatbot maskot finansial LEVINA."
+  },
+  "src/server/db/migrations/migrator.ts": {
+    "summary": "Skrip migrasi SQL DDL skema database migrator.ts."
+  },
+  "src/server/db/seeds/001_seed_categories.sql": {
+    "summary": "Data inisial (seeding) kategori dan data awal keuangan untuk inisialisasi aplikasi JajanAja."
+  },
+  "src/server/db/seeds/category.seed.ts": {
+    "summary": "Data inisial (seeding) kategori dan data awal keuangan untuk inisialisasi aplikasi JajanAja."
+  },
+  "src/server/db/store.ts": {
+    "summary": "In-memory singleton store server-side yang mengelola transaksi, aset, budget, split bill, whatsapp, dan chat LEVINA."
+  },
+  "src/server/schemas/asset.schema.ts": {
+    "summary": "Skema validasi Zod dan tipe data model backend untuk modul asset."
+  },
+  "src/server/schemas/budget.schema.ts": {
+    "summary": "Skema validasi Zod dan tipe data model backend untuk modul budget."
+  },
+  "src/server/schemas/index.ts": {
+    "summary": "Skema validasi Zod dan tipe data model backend untuk modul index.ts."
+  },
+  "src/server/schemas/levina.schema.ts": {
+    "summary": "Skema validasi Zod dan tipe data model backend untuk modul levina."
+  },
+  "src/server/schemas/receipt.schema.ts": {
+    "summary": "Skema validasi Zod dan tipe data model backend untuk modul receipt."
+  },
+  "src/server/schemas/split-bill.schema.ts": {
+    "summary": "Skema validasi Zod dan tipe data model backend untuk modul split-bill."
+  },
+  "src/server/schemas/transaction.schema.ts": {
+    "summary": "Skema validasi Zod dan tipe data model backend untuk modul transaction."
+  },
+  "src/server/schemas/whatsapp.schema.ts": {
+    "summary": "Skema validasi Zod dan tipe data model backend untuk modul whatsapp."
+  },
+  "src/server/services/asset.service.ts": {
+    "summary": "Layanan manajemen rekening bank, e-wallet, dompet tunai, dan mutasi saldo aset."
+  },
+  "src/server/services/balance-budget.service.ts": {
+    "summary": "Layanan manajemen pos anggaran (budget) bulanan, evaluasi pemakaian, dan peringatan limit."
+  },
+  "src/server/services/chart.service.ts": {
+    "summary": "Layanan bisnis logika backend untuk modul chart."
+  },
+  "src/server/services/dashboard.service.ts": {
+    "summary": "Layanan bisnis logika backend untuk modul dashboard."
+  },
+  "src/server/services/levina-chat.service.ts": {
+    "summary": "Layanan orkestrator percakapan chatbot LEVINA dengan persistensi dan konteks riwayat dialog."
+  },
+  "src/server/services/levina-guide.service.ts": {
+    "summary": "Layanan generator panduan langkah fitur JajanAja (Bagi Tagihan, Struk, WhatsApp, Budgetin, Asetku)."
+  },
+  "src/server/services/levina-intent.service.ts": {
+    "summary": "Layanan deteksi intent pertanyaan pengguna untuk klasifikasi prompt chatbot LEVINA."
+  },
+  "src/server/services/levina-qa.service.ts": {
+    "summary": "Layanan penjawab cerdas Q&A seputar riwayat transaksi, pengeluaran, dan sisa budget keuangan."
+  },
+  "src/server/services/levina-saving-tips.service.ts": {
+    "summary": "Layanan generator rekomendasi hemat dan deteksi kebocoran halus (bocor halus) berbasis transaksi riil."
+  },
+  "src/server/services/receipt.service.ts": {
+    "summary": "Layanan simulasi OCR dan parsing struk belanjaan fisik menjadi item transaksi dan kategori otomatis."
+  },
+  "src/server/services/split-bill.service.ts": {
+    "summary": "Layanan bisnis logika Bagi Tagihan (split bill): kalkulasi sama rata/bebas, status lunas, dan integrasi WhatsApp."
+  },
+  "src/server/services/transaction.service.ts": {
+    "summary": "Layanan manajemen transaksi pengeluaran dan pemasukan, filter periode, dan ringkasan cash flow."
+  },
+  "src/server/services/whatsapp-auto-reply.service.ts": {
+    "summary": "Layanan pembuat balasan konfirmasi otomatis WhatsApp setelah transaksi berhasil atau gagal dicatat."
+  },
+  "src/server/services/whatsapp-parser.service.ts": {
+    "summary": "Layanan NLP parser pesan chat WhatsApp untuk mengekstraksi nominal, deskripsi, dan kategori transaksi."
+  },
+  "src/server/services/whatsapp-transaction.service.ts": {
+    "summary": "Layanan penyimpanan transaksi keuangan otomatis yang berasal dari parsing pesan WhatsApp pengguna."
+  },
+  "src/server/services/whatsapp.service.ts": {
+    "summary": "Layanan manajemen koneksi nomor WhatsApp, verifikasi akun, dan pencatatan log pesan."
+  },
+  "src/types/finance.ts": {
+    "summary": "Definisi TypeScript interface dan types untuk model data domain finance."
+  },
+  "src/types/levina.ts": {
+    "summary": "Definisi TypeScript interface dan types untuk model data domain levina."
+  },
+  "src/types/receipt.ts": {
+    "summary": "Definisi TypeScript interface dan types untuk model data domain receipt."
+  },
+  "src/types/split-bill.ts": {
+    "summary": "Definisi TypeScript interface dan types untuk model data domain split-bill."
+  },
+  "tsconfig.json": {
+    "summary": "Konfigurasi kompilasi TypeScript untuk alias path, modul ESNext, dan strict mode Next.js."
+  }
+}

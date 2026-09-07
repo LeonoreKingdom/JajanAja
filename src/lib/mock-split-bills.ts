@@ -1,0 +1,57 @@
+import { SplitBillGroup } from "@/types/split-bill";
+
+export const initialMockSplitBills: SplitBillGroup[] = [
+  {
+    id: "split-1",
+    judul: "Makan Malam Bareng di Resto Padang",
+    totalTagihan: 240000,
+    tanggal: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1).toISOString().split("T")[0],
+    metode: "sama_rata",
+    namaToko: "Resto Padang Sederhana",
+    status: "aktif",
+    catatan: "Nasi rendang, ayam gulai, kerupuk kulit, es teh",
+    peserta: [
+      { id: "p-1", nama: "Kamu (Talitha)", bagian: 60000, sudahBayar: true },
+      { id: "p-2", nama: "Dimas", bagian: 60000, sudahBayar: true },
+      { id: "p-3", nama: "Sarah", bagian: 60000, sudahBayar: false, nomorHp: "08123456789" },
+      { id: "p-4", nama: "Budi", bagian: 60000, sudahBayar: false, nomorHp: "08219876543" },
+    ],
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1).toISOString(),
+    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1).toISOString(),
+  },
+  {
+    id: "split-2",
+    judul: "Ngopi Sore Janji Jiwa & Toast",
+    totalTagihan: 105000,
+    tanggal: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString().split("T")[0],
+    metode: "nominal_bebas",
+    namaToko: "Kopi Janji Jiwa Jkt",
+    status: "aktif",
+    catatan: "Kopi susu aren x2, crunchy toast x1",
+    peserta: [
+      { id: "p-1", nama: "Kamu (Talitha)", bagian: 38000, sudahBayar: true },
+      { id: "p-5", nama: "Anya", bagian: 35000, sudahBayar: true },
+      { id: "p-6", nama: "Rizky", bagian: 32000, sudahBayar: false, nomorHp: "08561122334" },
+    ],
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString(),
+    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString(),
+  },
+  {
+    id: "split-3",
+    judul: "Patungan Pizza Party Akhir Pekan",
+    totalTagihan: 320000,
+    tanggal: new Date(Date.now() - 1000 * 60 * 60 * 24 * 6).toISOString().split("T")[0],
+    metode: "sama_rata",
+    namaToko: "Pizza Hut Delivery",
+    status: "selesai",
+    catatan: "2 Pizza Meat Lovers + Garlic Bread",
+    peserta: [
+      { id: "p-1", nama: "Kamu (Talitha)", bagian: 80000, sudahBayar: true },
+      { id: "p-7", nama: "Kevin", bagian: 80000, sudahBayar: true },
+      { id: "p-8", nama: "Clara", bagian: 80000, sudahBayar: true },
+      { id: "p-9", nama: "Reza", bagian: 80000, sudahBayar: true },
+    ],
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 6).toISOString(),
+    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 6).toISOString(),
+  },
+];
