@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { assetService } from "@/server/services/asset.service";
 import { validateCreateAsset } from "@/server/schemas/asset.schema";
+import { ensureStoreInitialized } from "@/server/db/store";
 
 /**
  * GET /api/aset
@@ -8,6 +9,7 @@ import { validateCreateAsset } from "@/server/schemas/asset.schema";
  */
 export async function GET(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     const { searchParams } = new URL(request.url);
     const jenis = searchParams.get("jenis") || undefined;
     const search = searchParams.get("q") || searchParams.get("search") || undefined;
@@ -46,6 +48,7 @@ export async function GET(request: NextRequest) {
  */
 export async function POST(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     let body: unknown;
     try {
       body = await request.json();

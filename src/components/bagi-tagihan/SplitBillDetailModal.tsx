@@ -104,16 +104,16 @@ export default function SplitBillDetailModal({
         </div>
       )}
 
-      <div className="w-full max-w-md bg-white rounded-t-3xl sm:rounded-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 sm:zoom-in-95">
+      <div className="w-full max-w-md bg-white dark:bg-slate-850 rounded-t-3xl sm:rounded-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border dark:border-slate-700 animate-in slide-in-from-bottom-4 sm:zoom-in-95">
         {/* Modal Header */}
-        <div className="p-4 border-b border-slate-100 flex items-start justify-between bg-slate-50/70">
+        <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between bg-slate-50/70 dark:bg-slate-800/60">
           <div className="space-y-0.5 min-w-0 pr-2">
             <div className="flex items-center gap-2">
               <span
                 className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider ${
                   bill.status === "selesai"
-                    ? "bg-emerald-100 text-emerald-800"
-                    : "bg-amber-100 text-amber-800"
+                    ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300"
+                    : "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300"
                 }`}
               >
                 {bill.status === "selesai" ? "✓ Lunas Semua" : "⏳ Sedang Berjalan"}
@@ -122,11 +122,11 @@ export default function SplitBillDetailModal({
                 {bill.metode === "sama_rata" ? "Sama Rata" : "Nominal Bebas"}
               </span>
             </div>
-            <h2 className="font-bold text-sm text-slate-900 truncate">
+            <h2 className="font-bold text-sm text-slate-900 dark:text-white truncate">
               {bill.judul}
             </h2>
             {bill.namaToko && (
-              <p className="text-xs text-slate-500 flex items-center gap-1">
+              <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
                 <Store size={12} className="text-slate-400" />
                 <span>{bill.namaToko}</span>
                 <span>•</span>
@@ -139,7 +139,7 @@ export default function SplitBillDetailModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-600 flex items-center justify-center transition shrink-0 cursor-pointer"
+            className="w-8 h-8 rounded-full bg-slate-200/80 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-200 flex items-center justify-center transition shrink-0 cursor-pointer"
           >
             <X size={16} />
           </button>
@@ -206,8 +206,8 @@ export default function SplitBillDetailModal({
           {/* Daftar Status Bayar Peserta */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                <Users size={14} className="text-blue-600" />
+              <h3 className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+                <Users size={14} className="text-blue-600 dark:text-blue-400" />
                 <span>Rincian Peserta ({totalPeserta})</span>
               </h3>
               <span className="text-[10px] text-slate-400">
@@ -215,33 +215,33 @@ export default function SplitBillDetailModal({
               </span>
             </div>
 
-            <div className="divide-y divide-slate-100 border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-2xs">
+            <div className="divide-y divide-slate-100 dark:divide-slate-750 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden bg-white dark:bg-slate-800 shadow-2xs">
               {bill.peserta.map((peserta) => {
                 const isUser = peserta.nama.toLowerCase().includes("kamu");
 
                 return (
                   <div
                     key={peserta.id}
-                    className="p-3 flex items-center justify-between gap-2 hover:bg-slate-50/70 transition"
+                    className="p-3 flex items-center justify-between gap-2 hover:bg-slate-50/70 dark:hover:bg-slate-750 transition"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
                       <div
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
                           peserta.sudahBayar
-                            ? "bg-emerald-100 text-emerald-800"
-                            : "bg-amber-100 text-amber-800"
+                            ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300"
+                            : "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300"
                         }`}
                       >
                         {peserta.nama.charAt(0)}
                       </div>
                       <div className="min-w-0">
-                        <p className="font-bold text-xs text-slate-800 truncate flex items-center gap-1">
+                        <p className="font-bold text-xs text-slate-800 dark:text-slate-200 truncate flex items-center gap-1">
                           <span>{peserta.nama}</span>
                           {isUser && (
-                            <span className="text-[10px] text-blue-600 font-bold">(Kamu)</span>
+                            <span className="text-[10px] text-blue-600 dark:text-blue-400 font-bold">(Kamu)</span>
                           )}
                         </p>
-                        <p className="text-[11px] font-black text-slate-900">
+                        <p className="text-[11px] font-black text-slate-900 dark:text-white">
                           {formatRupiah(peserta.bagian)}
                         </p>
                       </div>
@@ -253,7 +253,7 @@ export default function SplitBillDetailModal({
                         <button
                           type="button"
                           onClick={() => handleSendReminder(peserta)}
-                          className="px-2 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-[10px] font-bold flex items-center gap-1 transition"
+                          className="px-2 py-1 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 rounded-lg text-[10px] font-bold flex items-center gap-1 transition"
                           title="Salin pesan tagih WhatsApp"
                         >
                           {copiedParticipantId === peserta.id ? (
@@ -276,18 +276,18 @@ export default function SplitBillDetailModal({
                         onClick={() => handleToggleParticipant(peserta.id)}
                         className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-2xs active:scale-95 cursor-pointer ${
                           peserta.sudahBayar
-                            ? "bg-emerald-100 text-emerald-800 hover:bg-emerald-200"
-                            : "bg-amber-100 text-amber-800 hover:bg-amber-200"
+                            ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-200 dark:hover:bg-emerald-900/60"
+                            : "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/60"
                         }`}
                       >
                         {peserta.sudahBayar ? (
                           <>
-                            <CheckCircle2 size={13} className="text-emerald-700" />
+                            <CheckCircle2 size={13} className="text-emerald-700 dark:text-emerald-400" />
                             <span>Lunas</span>
                           </>
                         ) : (
                           <>
-                            <Clock size={13} className="text-amber-700" />
+                            <Clock size={13} className="text-amber-700 dark:text-amber-400" />
                             <span>Belum</span>
                           </>
                         )}
@@ -301,21 +301,21 @@ export default function SplitBillDetailModal({
 
           {/* Catatan Tagihan */}
           {bill.catatan && (
-            <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-1">
+            <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs space-y-1">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                 Catatan
               </span>
-              <p className="text-slate-700 italic">{bill.catatan}</p>
+              <p className="text-slate-700 dark:text-slate-300 italic">{bill.catatan}</p>
             </div>
           )}
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 border-t border-slate-100 bg-slate-50 flex items-center gap-2">
+        <div className="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 flex items-center gap-2">
           <button
             type="button"
             onClick={onClose}
-            className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition cursor-pointer shadow-md"
+            className="w-full py-2.5 rounded-xl bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-500 text-white font-bold text-xs transition cursor-pointer shadow-md"
           >
             Tutup
           </button>

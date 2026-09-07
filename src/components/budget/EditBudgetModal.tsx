@@ -96,9 +96,9 @@ export default function EditBudgetModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-      <div className="w-full max-w-sm bg-white rounded-3xl p-5 space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto">
+      <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto border dark:border-slate-700">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
           <div className="flex items-center gap-2">
             <div
               className="w-8 h-8 rounded-xl flex items-center justify-center text-white shrink-0 shadow-2xs"
@@ -107,7 +107,7 @@ export default function EditBudgetModal({
               <IconHelper name={budget.kategori.ikon} size={16} />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-slate-900">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Ubah Batas Budget
               </h3>
               <p className="text-[11px] text-slate-400">{budget.kategori.nama}</p>
@@ -116,7 +116,7 @@ export default function EditBudgetModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800"
+            className="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
           >
             <X size={15} />
           </button>
@@ -124,37 +124,37 @@ export default function EditBudgetModal({
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Komparasi Pagu Lama vs Baru */}
-          <div className="bg-slate-50 p-3 rounded-2xl border border-slate-100 space-y-2">
+          <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-2xl border border-slate-100 dark:border-slate-700 space-y-2">
             <div className="flex items-center justify-between text-xs">
               <div>
                 <span className="text-slate-400 block text-[10px]">Pagu Saat Ini</span>
-                <span className="font-bold text-slate-700">
+                <span className="font-bold text-slate-700 dark:text-slate-200">
                   {formatRupiah(budget.batasJumlah)}
                 </span>
               </div>
               <ArrowRight size={14} className="text-slate-400" />
               <div className="text-right">
-                <span className="text-indigo-600 font-bold block text-[10px]">
+                <span className="text-indigo-600 dark:text-indigo-400 font-bold block text-[10px]">
                   Pagu Baru
                 </span>
-                <span className="font-black text-indigo-700">
+                <span className="font-black text-indigo-700 dark:text-indigo-300">
                   {formatRupiah(parsedLimit)}
                 </span>
               </div>
             </div>
 
             {/* Live Projected Sisa & Status */}
-            <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs">
-              <span className="text-slate-500">
-                Terpakai: <strong>{formatRupiah(budget.terpakai)}</strong>
+            <div className="pt-2 border-t border-slate-200/60 dark:border-slate-700 flex items-center justify-between text-xs">
+              <span className="text-slate-500 dark:text-slate-400">
+                Terpakai: <strong className="text-slate-800 dark:text-slate-200">{formatRupiah(budget.terpakai)}</strong>
               </span>
               <span
                 className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                   isProjectedOver
-                    ? "bg-rose-100 text-rose-700"
+                    ? "bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300"
                     : isProjectedWarning
-                    ? "bg-amber-100 text-amber-800"
-                    : "bg-emerald-100 text-emerald-800"
+                    ? "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300"
+                    : "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300"
                 }`}
               >
                 {isProjectedOver
@@ -166,7 +166,7 @@ export default function EditBudgetModal({
 
           {/* Input Batas Pagu Baru */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Nominal Pagu Baru (Rp)
             </label>
             <div className="relative">
@@ -179,7 +179,7 @@ export default function EditBudgetModal({
                 required
                 value={rawLimit}
                 onChange={handleLimitChange}
-                className="w-full pl-11 pr-4 py-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xl font-black text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-2xs"
+                className="w-full pl-11 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xl font-black text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-2xs"
                 autoFocus
               />
             </div>
@@ -188,7 +188,7 @@ export default function EditBudgetModal({
             <div className="mt-3 space-y-1">
               <div className="flex justify-between text-[10px] text-slate-400 font-semibold">
                 <span>Slider Cepat</span>
-                <span>{formatRupiah(parsedLimit)}</span>
+                <span className="text-slate-700 dark:text-slate-200 font-bold">{formatRupiah(parsedLimit)}</span>
               </div>
               <input
                 type="range"
@@ -197,7 +197,7 @@ export default function EditBudgetModal({
                 step={50000}
                 value={Math.min(sliderMax, Math.max(sliderMin, parsedLimit))}
                 onChange={handleSliderChange}
-                className="w-full accent-indigo-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
+                className="w-full accent-indigo-600 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer"
               />
               <div className="flex justify-between text-[9px] text-slate-400">
                 <span>{formatRupiah(sliderMin)}</span>
@@ -208,7 +208,7 @@ export default function EditBudgetModal({
 
           {/* Quick Recommendations */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1">
               <Sparkles size={12} className="text-amber-500" />
               <span>Rekomendasi Cepat</span>
             </label>
@@ -216,25 +216,25 @@ export default function EditBudgetModal({
               <button
                 type="button"
                 onClick={() => applyRecommendation("minus10")}
-                className="p-1.5 bg-slate-100 hover:bg-indigo-50 border border-slate-200 rounded-lg text-slate-700 font-bold text-[11px] flex items-center justify-center gap-0.5 transition"
+                className="p-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 font-bold text-[11px] flex items-center justify-center gap-0.5 transition"
               >
-                <TrendingDown size={12} className="text-emerald-600" />
+                <TrendingDown size={12} className="text-emerald-600 dark:text-emerald-400" />
                 <span>-10% Hemat</span>
               </button>
               <button
                 type="button"
                 onClick={() => applyRecommendation("plus10")}
-                className="p-1.5 bg-slate-100 hover:bg-indigo-50 border border-slate-200 rounded-lg text-slate-700 font-bold text-[11px] flex items-center justify-center gap-0.5 transition"
+                className="p-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 font-bold text-[11px] flex items-center justify-center gap-0.5 transition"
               >
-                <TrendingUp size={12} className="text-indigo-600" />
+                <TrendingUp size={12} className="text-indigo-600 dark:text-indigo-400" />
                 <span>+10% Longgar</span>
               </button>
               <button
                 type="button"
                 onClick={() => applyRecommendation("adaptive")}
-                className="p-1.5 bg-slate-100 hover:bg-indigo-50 border border-slate-200 rounded-lg text-slate-700 font-bold text-[11px] flex items-center justify-center gap-0.5 transition"
+                className="p-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 font-bold text-[11px] flex items-center justify-center gap-0.5 transition"
               >
-                <Target size={12} className="text-amber-600" />
+                <Target size={12} className="text-amber-600 dark:text-amber-400" />
                 <span>Adaptif Aman</span>
               </button>
             </div>
@@ -242,8 +242,8 @@ export default function EditBudgetModal({
 
           {/* Peringatan jika pagu lebih kecil dari terpakai */}
           {isProjectedOver && (
-            <div className="p-2.5 bg-rose-50 rounded-xl border border-rose-200 flex items-center gap-2 text-xs text-rose-700 font-medium animate-in fade-in">
-              <AlertCircle size={14} className="shrink-0 text-rose-600" />
+            <div className="p-2.5 bg-rose-50 dark:bg-rose-950/50 rounded-xl border border-rose-200 dark:border-rose-800 flex items-center gap-2 text-xs text-rose-700 dark:text-rose-300 font-medium animate-in fade-in">
+              <AlertCircle size={14} className="shrink-0 text-rose-600 dark:text-rose-400" />
               <span>
                 Pagu baru lebih kecil dari total pengeluaran pos ini yang sudah terjadi!
               </span>
@@ -251,7 +251,7 @@ export default function EditBudgetModal({
           )}
 
           {error && (
-            <p className="text-xs font-bold text-rose-600 flex items-center gap-1 bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+            <p className="text-xs font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-200 dark:border-rose-800">
               <AlertCircle size={14} className="shrink-0" />
               <span>{error}</span>
             </p>
@@ -262,13 +262,13 @@ export default function EditBudgetModal({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 py-2.5 rounded-xl border border-slate-200 font-bold text-xs text-slate-600 hover:bg-slate-50 transition"
+              className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-bold text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
             >
               Batal
             </button>
             <button
               type="submit"
-              className="flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-indigo-200 transition active:scale-95"
+              className="flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-indigo-200 dark:shadow-none transition active:scale-95"
             >
               <Check size={15} />
               <span>Simpan Perubahan</span>

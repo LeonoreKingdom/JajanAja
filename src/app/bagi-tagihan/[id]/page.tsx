@@ -21,9 +21,9 @@ import {
 import BottomNav from "@/components/layout/BottomNav";
 import { SplitBillGroup, SplitParticipant } from "@/types/split-bill";
 import {
-  getLocalSplitBillById,
-  saveLocalSplitBill,
-  deleteLocalSplitBill,
+  getSplitBillById,
+  updatePesertaStatusApi,
+  deleteSplitBillApi,
 } from "@/lib/split-bill-storage";
 import { formatRupiah } from "@/lib/utils";
 
@@ -40,11 +40,12 @@ export default function DetailBagiTagihanPage() {
 
   useEffect(() => {
     if (id) {
-      const found = getLocalSplitBillById(id);
-      if (found) {
-        setBill(found);
-      }
-      setIsLoaded(true);
+      getSplitBillById(id).then((found) => {
+        if (found) {
+          setBill(found);
+        }
+        setIsLoaded(true);
+      });
     }
   }, [id]);
 
@@ -57,18 +58,18 @@ export default function DetailBagiTagihanPage() {
     return (
       <div className="flex-1 flex flex-col p-4 pb-28 space-y-4 max-w-lg mx-auto w-full text-center">
         <div className="pt-12 space-y-3">
-          <div className="w-16 h-16 rounded-3xl bg-rose-50 text-rose-600 flex items-center justify-center mx-auto text-2xl">
+          <div className="w-16 h-16 rounded-3xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800 flex items-center justify-center mx-auto text-2xl">
             ⚠️
           </div>
-          <h2 className="text-base font-bold text-slate-900">
+          <h2 className="text-base font-bold text-slate-900 dark:text-white">
             Tagihan Tidak Ditemukan
           </h2>
-          <p className="text-xs text-slate-500 max-w-xs mx-auto">
-            Data Bagi Tagihan dengan ID ini tidak tersedia atau sudah dihapus dari penyimpanan lokalmu.
+          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+            Data Bagi Tagihan dengan ID ini tidak tersedia atau sudah dihapus dari database.
           </p>
           <Link
             href="/bagi-tagihan"
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold shadow-md shadow-blue-200"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold shadow-md shadow-blue-200 dark:shadow-none"
           >
             <ArrowLeft size={14} />
             <span>Kembali ke Daftar Tagihan</span>
@@ -97,10 +98,14 @@ export default function DetailBagiTagihanPage() {
   const percentLunas = Math.round((totalTerkumpul / bill.totalTagihan) * 100);
 
   // Toggle status bayar peserta
-  const handleTogglePayment = (participantId: string) => {
+  const handleTogglePayment = async (participantId: string) => {
+    const targetPeserta = bill.peserta.find((p) => p.id === participantId);
+    if (!targetPeserta) return;
+
+    const nextStatus = !targetPeserta.sudahBayar;
     const updatedPeserta = bill.peserta.map((p) => {
       if (p.id !== participantId) return p;
-      return { ...p, sudahBayar: !p.sudahBayar };
+      return { ...p, sudahBayar: nextStatus };
     });
 
     const isAllPaid = updatedPeserta.every((p) => p.sudahBayar);
@@ -112,13 +117,19 @@ export default function DetailBagiTagihanPage() {
       updatedAt: new Date().toISOString(),
     };
 
-    saveLocalSplitBill(updated);
     setBill(updated);
     showToast("Status pembayaran diperbarui!");
+
+    try {
+      const res = await updatePesertaStatusApi(bill.id, participantId, nextStatus);
+      if (res) setBill(res);
+    } catch (e) {
+      console.warn("Gagal update status di API:", e);
+    }
   };
 
   // Tandai semua lunas
-  const handleMarkAllPaid = () => {
+  const handleMarkAllPaid = async () => {
     const updatedPeserta = bill.peserta.map((p) => ({ ...p, sudahBayar: true }));
     const updated: SplitBillGroup = {
       ...bill,
@@ -126,9 +137,16 @@ export default function DetailBagiTagihanPage() {
       status: "selesai",
       updatedAt: new Date().toISOString(),
     };
-    saveLocalSplitBill(updated);
     setBill(updated);
     showToast("Semua peserta berhasil ditandai Lunas!");
+
+    for (const p of bill.peserta) {
+      if (!p.sudahBayar) {
+        try {
+          await updatePesertaStatusApi(bill.id, p.id, true);
+        } catch {}
+      }
+    }
   };
 
   // Bagikan WhatsApp
@@ -157,8 +175,10 @@ export default function DetailBagiTagihanPage() {
   };
 
   // Hapus Tagihan
-  const handleDeleteBill = () => {
-    deleteLocalSplitBill(bill.id);
+  const handleDeleteBill = async () => {
+    try {
+      await deleteSplitBillApi(bill.id);
+    } catch {}
     router.push("/bagi-tagihan");
   };
 
@@ -174,30 +194,30 @@ export default function DetailBagiTagihanPage() {
       {/* Modal Konfirmasi Hapus */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xs bg-white rounded-3xl p-5 space-y-4 shadow-2xl text-center">
-            <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center mx-auto text-xl">
+          <div className="w-full max-w-xs bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl text-center border border-slate-100 dark:border-slate-700">
+            <div className="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto text-xl">
               <AlertTriangle size={24} />
             </div>
             <div className="space-y-1">
-              <h3 className="font-bold text-sm text-slate-900">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Hapus Bagi Tagihan Ini?
               </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Riwayat pembagian tagihan &quot;{bill.judul}&quot; akan dihapus permanen dari penyimpanan lokal.
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Riwayat pembagian tagihan &quot;{bill.judul}&quot; akan dihapus permanen dari database.
               </p>
             </div>
             <div className="flex items-center gap-2 pt-2">
               <button
                 type="button"
                 onClick={() => setIsDeleteModalOpen(false)}
-                className="flex-1 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-50 transition"
+                className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
               >
                 Batal
               </button>
               <button
                 type="button"
                 onClick={handleDeleteBill}
-                className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow-md shadow-rose-200"
+                className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow-md shadow-rose-200 dark:shadow-none cursor-pointer"
               >
                 Hapus
               </button>
@@ -212,12 +232,12 @@ export default function DetailBagiTagihanPage() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition active:scale-95 cursor-pointer"
+            className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition active:scale-95 cursor-pointer"
           >
             <ArrowLeft size={18} />
           </button>
           <div>
-            <h1 className="text-base font-black text-slate-900">
+            <h1 className="text-base font-black text-slate-900 dark:text-white">
               Rincian Tagihan
             </h1>
             <p className="text-[11px] text-slate-400 font-medium">
@@ -229,7 +249,7 @@ export default function DetailBagiTagihanPage() {
         <button
           type="button"
           onClick={() => setIsDeleteModalOpen(true)}
-          className="w-9 h-9 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition"
+          className="w-9 h-9 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 flex items-center justify-center transition cursor-pointer"
           title="Hapus tagihan"
         >
           <Trash2 size={16} />
@@ -237,7 +257,7 @@ export default function DetailBagiTagihanPage() {
       </div>
 
       {/* Hero Banner Kartu Tagihan */}
-      <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-3xl p-5 space-y-4 shadow-lg shadow-blue-200">
+      <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-3xl p-5 space-y-4 shadow-lg shadow-blue-200 dark:shadow-none">
         <div className="flex items-start justify-between gap-2">
           <div className="space-y-1">
             <span
@@ -312,19 +332,19 @@ export default function DetailBagiTagihanPage() {
         <button
           type="button"
           onClick={handleMarkAllPaid}
-          className="w-full py-2.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs rounded-2xl flex items-center justify-center gap-2 transition border border-emerald-200 shadow-2xs active:scale-95 cursor-pointer"
+          className="w-full py-2.5 px-4 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 font-bold text-xs rounded-2xl flex items-center justify-center gap-2 transition border border-emerald-200 dark:border-emerald-800/60 shadow-2xs active:scale-95 cursor-pointer"
         >
-          <CheckCircle2 size={16} className="text-emerald-600" />
+          <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400" />
           <span>Tandai Semua Teman Sudah Lunas</span>
         </button>
       )}
 
       {/* Daftar Rincian Peserta */}
-      <div className="bg-white rounded-3xl p-4 border border-slate-200 shadow-2xs space-y-3">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+        <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
           <div className="flex items-center gap-2">
-            <Users size={16} className="text-blue-600" />
-            <h3 className="font-bold text-xs text-slate-800 uppercase tracking-wider">
+            <Users size={16} className="text-blue-600 dark:text-blue-400" />
+            <h3 className="font-bold text-xs text-slate-800 dark:text-slate-200 uppercase tracking-wider">
               Daftar Peserta ({totalPeserta})
             </h3>
           </div>
@@ -333,7 +353,7 @@ export default function DetailBagiTagihanPage() {
           </span>
         </div>
 
-        <div className="divide-y divide-slate-100 space-y-1">
+        <div className="divide-y divide-slate-100 dark:divide-slate-800 space-y-1">
           {bill.peserta.map((peserta) => {
             const isUser = peserta.nama.toLowerCase().includes("kamu");
 
@@ -346,22 +366,22 @@ export default function DetailBagiTagihanPage() {
                   <div
                     className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 ${
                       peserta.sudahBayar
-                        ? "bg-emerald-100 text-emerald-800"
-                        : "bg-amber-100 text-amber-800"
+                        ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300"
+                        : "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300"
                     }`}
                   >
                     {peserta.nama.charAt(0)}
                   </div>
                   <div className="min-w-0">
-                    <p className="font-bold text-xs text-slate-800 truncate flex items-center gap-1">
+                    <p className="font-bold text-xs text-slate-800 dark:text-slate-200 truncate flex items-center gap-1">
                       <span>{peserta.nama}</span>
                       {isUser && (
-                        <span className="text-[10px] text-blue-600 font-bold">
+                        <span className="text-[10px] text-blue-600 dark:text-blue-400 font-bold">
                           (Kamu)
                         </span>
                       )}
                     </p>
-                    <p className="text-[11px] font-black text-slate-900">
+                    <p className="text-[11px] font-black text-slate-900 dark:text-white">
                       {formatRupiah(peserta.bagian)}
                     </p>
                   </div>
@@ -373,18 +393,18 @@ export default function DetailBagiTagihanPage() {
                     onClick={() => handleTogglePayment(peserta.id)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-2xs active:scale-95 cursor-pointer ${
                       peserta.sudahBayar
-                        ? "bg-emerald-100 text-emerald-800 hover:bg-emerald-200"
-                        : "bg-amber-100 text-amber-800 hover:bg-amber-200"
+                        ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-200 dark:hover:bg-emerald-900/60"
+                        : "bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/60"
                     }`}
                   >
                     {peserta.sudahBayar ? (
                       <>
-                        <CheckCircle2 size={13} className="text-emerald-700" />
+                        <CheckCircle2 size={13} className="text-emerald-700 dark:text-emerald-400" />
                         <span>Lunas</span>
                       </>
                     ) : (
                       <>
-                        <Clock size={13} className="text-amber-700" />
+                        <Clock size={13} className="text-amber-700 dark:text-amber-400" />
                         <span>Belum</span>
                       </>
                     )}
@@ -398,11 +418,11 @@ export default function DetailBagiTagihanPage() {
 
       {/* Catatan Tambahan */}
       {bill.catatan && (
-        <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200 text-xs space-y-1">
+        <div className="bg-slate-50 dark:bg-slate-850 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
             Catatan Tambahan
           </span>
-          <p className="text-slate-700 leading-relaxed">{bill.catatan}</p>
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{bill.catatan}</p>
         </div>
       )}
 
@@ -410,7 +430,7 @@ export default function DetailBagiTagihanPage() {
       <button
         type="button"
         onClick={handleShareWhatsApp}
-        className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-200 active:scale-95 transition cursor-pointer"
+        className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-200 dark:shadow-none active:scale-95 transition cursor-pointer"
       >
         {copiedId === "all" ? (
           <>

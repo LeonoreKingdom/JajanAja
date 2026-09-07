@@ -60,7 +60,7 @@ export default function FinancialConditionSummary({
     title: "Kondisi Keuangan Sehat",
     desc: "Arus kas surplus & alokasi budget masih dalam batas kendali.",
     color: "bg-emerald-500",
-    badgeBg: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    badgeBg: "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
     level: "sehat",
   };
 
@@ -72,7 +72,7 @@ export default function FinancialConditionSummary({
       title: "Waspada Pengeluaran",
       desc: "Pengeluaran mendekati batas budget bulanan. Rem pengeluaran jajan!",
       color: "bg-rose-500",
-      badgeBg: "bg-rose-50 text-rose-700 border-rose-200",
+      badgeBg: "bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800",
       level: "waspada",
     };
   } else if (budgetUsedPercent > 65 || savingRate < 20) {
@@ -80,7 +80,7 @@ export default function FinancialConditionSummary({
       title: "Cukup Stabil",
       desc: "Arus kas positif, tetapi perhatikan pos jajan agar tidak bocor halus.",
       color: "bg-amber-500",
-      badgeBg: "bg-amber-50 text-amber-700 border-amber-200",
+      badgeBg: "bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800",
       level: "stabil",
     };
   }
@@ -97,15 +97,15 @@ export default function FinancialConditionSummary({
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-xs space-y-3.5">
+    <div className="bg-white dark:bg-slate-850 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-3.5">
       {/* Header Widget */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center">
+          <div className="w-7 h-7 rounded-lg bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center">
             <Activity size={16} />
           </div>
           <div>
-            <h2 className="text-sm font-bold text-slate-900">
+            <h2 className="text-sm font-bold text-slate-900 dark:text-white">
               Ringkasan Kondisi Uang
             </h2>
             <p className="text-[11px] text-slate-400">
@@ -130,28 +130,28 @@ export default function FinancialConditionSummary({
       </div>
 
       {/* Hero Card: Batas Jajan Harian Aman */}
-      <div className="p-3.5 rounded-xl bg-gradient-to-r from-teal-50 via-emerald-50/60 to-cyan-50 border border-teal-100">
+      <div className="p-3.5 rounded-xl bg-gradient-to-r from-teal-50 via-emerald-50/60 to-cyan-50 dark:from-teal-950/40 dark:via-emerald-950/30 dark:to-cyan-950/30 border border-teal-100 dark:border-teal-800/60">
         <div className="flex items-start justify-between">
           <div>
-            <span className="text-[11px] font-bold text-teal-800 uppercase tracking-wide flex items-center gap-1">
-              <Zap size={13} className="text-teal-600" />
+            <span className="text-[11px] font-bold text-teal-800 dark:text-teal-300 uppercase tracking-wide flex items-center gap-1">
+              <Zap size={13} className="text-teal-600 dark:text-teal-400" />
               Batas Jajan Aman Harian
             </span>
-            <div className="text-xl font-extrabold text-teal-950 mt-0.5">
+            <div className="text-xl font-extrabold text-teal-950 dark:text-teal-100 mt-0.5">
               {formatRupiah(batasAmanPerHari)}
-              <span className="text-xs font-semibold text-teal-700"> / hari</span>
+              <span className="text-xs font-semibold text-teal-700 dark:text-teal-400"> / hari</span>
             </div>
           </div>
           <div className="text-right">
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-teal-700 bg-white/80 px-2 py-0.5 rounded-full border border-teal-200/60">
+            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-teal-700 dark:text-teal-300 bg-white/80 dark:bg-slate-800/80 px-2 py-0.5 rounded-full border border-teal-200/60 dark:border-teal-800/60">
               <CalendarDays size={12} />
               Sisa {remainingDays} hari
             </span>
-            <p className="text-[10px] text-teal-600 mt-1">hingga akhir bulan</p>
+            <p className="text-[10px] text-teal-600 dark:text-teal-400 mt-1">hingga akhir bulan</p>
           </div>
         </div>
 
-        <p className="text-xs text-teal-900/90 mt-2 font-medium">
+        <p className="text-xs text-teal-900/90 dark:text-teal-200/90 mt-2 font-medium">
           💡 Bila kamu belanja maksimal {formatRupiah(batasAmanPerHari)} per hari,
           budget bulananmu dipastikan tidak akan boncos!
         </p>
@@ -160,50 +160,50 @@ export default function FinancialConditionSummary({
       {/* 3 Metrik Utama (Grid) */}
       <div className="grid grid-cols-3 gap-2 text-center">
         {/* Arus Kas Bersih */}
-        <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+        <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
           <span className="text-[10px] font-medium text-slate-400 block truncate">
             Surplus Kas
           </span>
-          <span className="text-xs sm:text-sm font-bold text-slate-800 block mt-0.5 truncate">
+          <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 block mt-0.5 truncate">
             {formatRupiah(cashflowBersih)}
           </span>
-          <div className="flex items-center justify-center gap-0.5 text-[10px] font-semibold text-emerald-600 mt-1">
+          <div className="flex items-center justify-center gap-0.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 mt-1">
             <TrendingUp size={11} />
             <span>Positif</span>
           </div>
         </div>
 
         {/* Rasio Tabungan */}
-        <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+        <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
           <span className="text-[10px] font-medium text-slate-400 block truncate">
             Tingkat Tabungan
           </span>
-          <span className="text-xs sm:text-sm font-bold text-slate-800 block mt-0.5">
+          <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 block mt-0.5">
             {savingRate}%
           </span>
-          <span className="text-[10px] text-slate-500 font-medium block mt-1">
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium block mt-1">
             dari income
           </span>
         </div>
 
         {/* Rata-rata Harian */}
-        <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+        <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
           <span className="text-[10px] font-medium text-slate-400 block truncate">
             Pengeluaran/Hari
           </span>
-          <span className="text-xs sm:text-sm font-bold text-slate-800 block mt-0.5 truncate">
+          <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 block mt-0.5 truncate">
             {formatRupiah(rataRataPengeluaranPerHari)}
           </span>
-          <div className="flex items-center justify-center gap-0.5 text-[10px] font-semibold text-slate-500 mt-1">
+          <div className="flex items-center justify-center gap-0.5 text-[10px] font-semibold text-slate-500 dark:text-slate-400 mt-1">
             <span>aktual</span>
           </div>
         </div>
       </div>
 
       {/* Mini Bar Chart: Tren Pengeluaran Mingguan */}
-      <div className="pt-2 border-t border-slate-100">
+      <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-bold text-slate-700">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-200">
             Tren Pengeluaran 7 Hari Terakhir
           </span>
           <span className="text-[10px] text-slate-400">Rata-rata Rp 99rb/hari</span>
@@ -221,12 +221,12 @@ export default function FinancialConditionSummary({
               </div>
 
               {/* Bar */}
-              <div className="w-full bg-slate-100 rounded-t-md h-14 flex items-end overflow-hidden">
+              <div className="w-full bg-slate-100 dark:bg-slate-750 rounded-t-md h-14 flex items-end overflow-hidden">
                 <div
                   className={`w-full rounded-t-md transition-all ${
                     item.isToday
                       ? "bg-teal-500"
-                      : "bg-slate-300 group-hover:bg-teal-400"
+                      : "bg-slate-300 dark:bg-slate-600 group-hover:bg-teal-400"
                   }`}
                   style={{ height: item.height }}
                 />
@@ -235,7 +235,7 @@ export default function FinancialConditionSummary({
               {/* Label Hari */}
               <span
                 className={`text-[10px] font-semibold ${
-                  item.isToday ? "text-teal-700 font-bold" : "text-slate-400"
+                  item.isToday ? "text-teal-700 dark:text-teal-400 font-bold" : "text-slate-400"
                 }`}
               >
                 {item.day}
@@ -250,17 +250,17 @@ export default function FinancialConditionSummary({
         <button
           onClick={() => setShowDetail(!showDetail)}
           type="button"
-          className="w-full py-2 px-3 bg-slate-50 hover:bg-slate-100 text-slate-600 rounded-xl text-xs font-semibold flex items-center justify-between transition"
+          className="w-full py-2 px-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-600 dark:text-slate-300 rounded-xl text-xs font-semibold flex items-center justify-between transition border dark:border-slate-700"
         >
           <span className="flex items-center gap-1.5">
-            <Info size={14} className="text-slate-500" />
+            <Info size={14} className="text-slate-500 dark:text-slate-400" />
             <span>Bagaimana kondisi uangmu dihitung?</span>
           </span>
           {showDetail ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
         </button>
 
         {showDetail && (
-          <div className="mt-2 p-3 bg-slate-50 rounded-xl text-xs text-slate-600 space-y-1.5 border border-slate-100 animate-in fade-in">
+          <div className="mt-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-xl text-xs text-slate-600 dark:text-slate-300 space-y-1.5 border border-slate-100 dark:border-slate-700 animate-in fade-in">
             <div className="flex items-start gap-2">
               <CheckCircle2 size={13} className="text-emerald-600 mt-0.5 shrink-0" />
               <span>

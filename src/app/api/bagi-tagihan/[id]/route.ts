@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   getBagiTagihanById,
 } from "@/server/services/split-bill.service";
-import { serverStore } from "@/server/db/store";
+import { serverStore, ensureStoreInitialized } from "@/server/db/store";
 
 interface RouteParams {
   params: Promise<{ id: string }>;
@@ -14,6 +14,7 @@ interface RouteParams {
  */
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
+    await ensureStoreInitialized();
     const { id } = await params;
     const bill = getBagiTagihanById(id);
 
@@ -78,6 +79,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
  */
 export async function PATCH(request: NextRequest, { params }: RouteParams) {
   try {
+    await ensureStoreInitialized();
     const { id } = await params;
     const existing = getBagiTagihanById(id);
 
@@ -152,6 +154,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
  */
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
+    await ensureStoreInitialized();
     const { id } = await params;
     const existing = getBagiTagihanById(id);
 

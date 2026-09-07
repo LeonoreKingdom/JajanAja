@@ -85,15 +85,15 @@ export default function CreateAssetModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-      <div className="w-full max-w-sm bg-white rounded-3xl p-5 space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto">
+      <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto border dark:border-slate-700">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
               <Wallet size={18} />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-slate-900">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Tambah Akun Aset Baru
               </h3>
               <p className="text-[11px] text-slate-400">Rekening, e-wallet, atau tunai</p>
@@ -102,7 +102,7 @@ export default function CreateAssetModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800"
+            className="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white"
           >
             <X size={15} />
           </button>
@@ -111,7 +111,7 @@ export default function CreateAssetModal({
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Pilihan Jenis Aset */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
               Jenis Aset
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -136,8 +136,8 @@ export default function CreateAssetModal({
                     }}
                     className={`p-2.5 rounded-xl border text-center font-bold text-xs flex flex-col items-center gap-1.5 transition ${
                       isSelected
-                        ? "border-blue-600 bg-blue-50/70 text-blue-900 ring-2 ring-blue-500"
-                        : "border-slate-200 bg-slate-50/50 text-slate-700 hover:bg-slate-100"
+                        ? "border-blue-600 bg-blue-50/70 dark:bg-blue-950/40 text-blue-900 dark:text-blue-300 ring-2 ring-blue-500"
+                        : "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-750"
                     }`}
                   >
                     <Icon size={16} />
@@ -150,7 +150,7 @@ export default function CreateAssetModal({
 
           {/* Nama Aset */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Nama Rekening / Dompet
             </label>
             <input
@@ -159,13 +159,13 @@ export default function CreateAssetModal({
               placeholder="Contoh: BCA Prioritas, GoPay Utama, Dompet Saku"
               value={nama}
               onChange={(e) => setNama(e.target.value)}
-              className="w-full px-3 py-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Saldo Awal */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Saldo Awal (Rp)
             </label>
             <div className="relative">
@@ -179,7 +179,7 @@ export default function CreateAssetModal({
                 placeholder="0"
                 value={rawSaldo}
                 onChange={handleSaldoChange}
-                className="w-full pl-11 pr-4 py-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xl font-black text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
+                className="w-full pl-11 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xl font-black text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
               />
             </div>
 
@@ -190,7 +190,7 @@ export default function CreateAssetModal({
                   key={amt}
                   type="button"
                   onClick={() => addPreset(amt)}
-                  className="px-2.5 py-1 bg-slate-100 hover:bg-blue-50 hover:text-blue-600 rounded-lg text-xs font-semibold text-slate-700 transition"
+                  className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-300 transition"
                 >
                   +{formatRupiah(amt).replace("Rp", "").trim()}
                 </button>
@@ -200,7 +200,7 @@ export default function CreateAssetModal({
 
           {/* Nomor Rekening / Akun (Opsional) */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Nomor Rekening / HP (Opsional)
             </label>
             <input
@@ -208,13 +208,13 @@ export default function CreateAssetModal({
               placeholder="Contoh: •••• 8921 atau 0812••••7890"
               value={nomorRekening}
               onChange={(e) => setNomorRekening(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
           {/* Pilihan Warna Tema Kartu */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">
               Warna Tema Kartu
             </label>
             <div className="flex items-center gap-2">
@@ -224,7 +224,7 @@ export default function CreateAssetModal({
                   type="button"
                   onClick={() => setWarnaTema(opt.val)}
                   className={`w-7 h-7 rounded-full bg-gradient-to-br ${opt.val} transition-transform ${
-                    warnaTema === opt.val ? "scale-125 ring-2 ring-slate-900" : ""
+                    warnaTema === opt.val ? "scale-125 ring-2 ring-slate-900 dark:ring-white" : ""
                   }`}
                   title={opt.label}
                 />
@@ -233,7 +233,7 @@ export default function CreateAssetModal({
           </div>
 
           {error && (
-            <p className="text-xs font-bold text-rose-600 flex items-center gap-1 bg-rose-50 p-2.5 rounded-xl border border-rose-200">
+            <p className="text-xs font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1 bg-rose-50 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-200 dark:border-rose-800">
               <AlertCircle size={14} className="shrink-0" />
               <span>{error}</span>
             </p>
@@ -244,13 +244,13 @@ export default function CreateAssetModal({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 py-2.5 rounded-xl border border-slate-200 font-bold text-xs text-slate-600 hover:bg-slate-50 transition"
+              className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 font-bold text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
             >
               Batal
             </button>
             <button
               type="submit"
-              className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-blue-200 transition active:scale-95"
+              className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-blue-200 dark:shadow-none transition active:scale-95"
             >
               <Check size={16} />
               <span>Simpan Aset</span>

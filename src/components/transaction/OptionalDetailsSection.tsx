@@ -79,48 +79,48 @@ export default function OptionalDetailsSection({
   ].filter(Boolean).length;
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-2xs transition-all">
+    <div className="bg-white dark:bg-slate-850 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-2xs transition-all">
       {/* Accordion Header */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-4 flex items-center justify-between text-left hover:bg-slate-50/80 transition"
+        className="w-full p-4 flex items-center justify-between text-left hover:bg-slate-50/80 dark:hover:bg-slate-800/80 transition cursor-pointer"
       >
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center shadow-2xs">
+          <div className="w-8 h-8 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-400 flex items-center justify-center shadow-2xs">
             <Sparkles size={16} />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-800">
+              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
                 Lengkapi Transaksi
               </span>
-              <span className="text-[10px] text-slate-400 font-medium">
+              <span className="text-[10px] text-slate-400 dark:text-slate-500 font-medium">
                 (Opsional)
               </span>
               {filledCount > 0 && (
-                <span className="text-[10px] font-bold bg-purple-100 text-purple-800 px-1.5 py-0.2 rounded-full">
+                <span className="text-[10px] font-bold bg-purple-100 dark:bg-purple-950/60 text-purple-800 dark:text-purple-300 px-1.5 py-0.2 rounded-full">
                   {filledCount} terisi
                 </span>
               )}
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-400 dark:text-slate-500">
               Foto struk, lokasi merchant, tag & catatan detail
             </p>
           </div>
         </div>
 
-        <div className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500">
+        <div className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400">
           {isOpen ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
         </div>
       </button>
 
       {/* Accordion Body Content */}
       {isOpen && (
-        <div className="p-4 pt-1 border-t border-slate-100 space-y-4 animate-in fade-in">
+        <div className="p-4 pt-1 border-t border-slate-100 dark:border-slate-750 space-y-4 animate-in fade-in">
           {/* 1. Merchant / Lokasi Toko */}
           <div>
-            <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1 flex items-center gap-1">
+            <label className="block text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1 flex items-center gap-1">
               <MapPin size={12} className="text-slate-400" />
               <span>Lokasi / Nama Merchant</span>
             </label>
@@ -129,37 +129,37 @@ export default function OptionalDetailsSection({
               placeholder="Contoh: Kopi Kenangan Mall Kota Kasablanka, Indomaret..."
               value={merchant}
               onChange={(e) => setMerchant(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-purple-500"
+              className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
             />
           </div>
 
           {/* 2. Upload / Foto Struk Belanja */}
           <div>
-            <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+            <label className="block text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1">
               <Camera size={12} className="text-slate-400" />
               <span>Lampiran Foto Struk / Bukti Transfer</span>
             </label>
 
             {photoUrl ? (
-              <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-50 p-2 flex items-center gap-3">
+              <div className="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-2 flex items-center gap-3">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={photoUrl}
                   alt="Bukti struk"
-                  className="w-14 h-14 object-cover rounded-lg border border-slate-200"
+                  className="w-14 h-14 object-cover rounded-lg border border-slate-200 dark:border-slate-600"
                 />
                 <div className="flex-1 min-w-0 text-xs">
-                  <p className="font-bold text-slate-800 truncate">
+                  <p className="font-bold text-slate-800 dark:text-white truncate">
                     Foto Struk Terlampir
                   </p>
-                  <p className="text-[10px] text-emerald-600 font-semibold mt-0.5">
+                  <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
                     ✓ Siap disimpan bersama transaksi
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setPhotoUrl(null)}
-                  className="w-7 h-7 rounded-full bg-rose-50 text-rose-600 hover:bg-rose-100 flex items-center justify-center transition"
+                  className="w-7 h-7 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/60 flex items-center justify-center transition cursor-pointer"
                   title="Hapus foto"
                 >
                   <X size={14} />
@@ -168,12 +168,12 @@ export default function OptionalDetailsSection({
             ) : (
               <div
                 onClick={() => fileInputRef.current?.click()}
-                className="border-2 border-dashed border-slate-200 hover:border-purple-400 rounded-xl p-3 text-center cursor-pointer bg-slate-50/50 hover:bg-purple-50/30 transition flex flex-col items-center justify-center gap-1"
+                className="border-2 border-dashed border-slate-200 dark:border-slate-700 hover:border-purple-400 dark:hover:border-purple-500 rounded-xl p-3 text-center cursor-pointer bg-slate-50/50 dark:bg-slate-800/50 hover:bg-purple-50/30 dark:hover:bg-purple-950/20 transition flex flex-col items-center justify-center gap-1"
               >
-                <div className="w-8 h-8 rounded-lg bg-white shadow-2xs border border-slate-200 flex items-center justify-center text-purple-600">
+                <div className="w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-2xs border border-slate-200 dark:border-slate-700 flex items-center justify-center text-purple-600 dark:text-purple-400">
                   <Camera size={16} />
                 </div>
-                <span className="text-xs font-semibold text-slate-700">
+                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                   Ketuk untuk ambil foto / upload struk
                 </span>
                 <span className="text-[10px] text-slate-400">
@@ -192,7 +192,7 @@ export default function OptionalDetailsSection({
 
           {/* 3. Catatan Multi-Line Detail Barang */}
           <div>
-            <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1 flex items-center gap-1">
+            <label className="block text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1 flex items-center gap-1">
               <FileText size={12} className="text-slate-400" />
               <span>Rincian Catatan / Item</span>
             </label>
@@ -201,13 +201,13 @@ export default function OptionalDetailsSection({
               placeholder="Catat rincian barang, nomor invoice, atau pengingat transaksi..."
               value={catatanDetail}
               onChange={(e) => setCatatanDetail(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-purple-500 resize-none"
+              className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-purple-500 resize-none"
             />
           </div>
 
           {/* 4. Multi-Tags Pilihan */}
           <div>
-            <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+            <label className="block text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1">
               <Tag size={12} className="text-slate-400" />
               <span>Tag Tambahan</span>
             </label>
@@ -222,7 +222,7 @@ export default function OptionalDetailsSection({
                     className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${
                       isSelected
                         ? "bg-purple-600 text-white shadow-2xs"
-                        : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-750"
                     }`}
                   >
                     #{tag}
@@ -234,14 +234,14 @@ export default function OptionalDetailsSection({
 
           {/* 5. Checkbox Tambahan: Reimburse & Split Bill */}
           {type === "pengeluaran" && (
-            <div className="pt-2 border-t border-slate-100 space-y-2">
+            <div className="pt-2 border-t border-slate-100 dark:border-slate-750 space-y-2">
               {setIsReimbursable && (
-                <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-700 font-medium select-none">
+                <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-700 dark:text-slate-300 font-medium select-none">
                   <input
                     type="checkbox"
                     checked={isReimbursable}
                     onChange={(e) => setIsReimbursable(e.target.checked)}
-                    className="w-4 h-4 text-purple-600 rounded border-slate-300 focus:ring-purple-500"
+                    className="w-4 h-4 text-purple-600 rounded border-slate-300 dark:border-slate-600 focus:ring-purple-500"
                   />
                   <span>
                     Bisa di-reimburse kantor / pihak lain (Tandai tagihan)
@@ -250,12 +250,12 @@ export default function OptionalDetailsSection({
               )}
 
               {setIsSplitBillShortcut && (
-                <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-700 font-medium select-none">
+                <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-700 dark:text-slate-300 font-medium select-none">
                   <input
                     type="checkbox"
                     checked={isSplitBillShortcut}
                     onChange={(e) => setIsSplitBillShortcut(e.target.checked)}
-                    className="w-4 h-4 text-purple-600 rounded border-slate-300 focus:ring-purple-500"
+                    className="w-4 h-4 text-purple-600 rounded border-slate-300 dark:border-slate-600 focus:ring-purple-500"
                   />
                   <span>
                     Bagi tagihan ini dengan teman nanti (Jadikan Split Bill)

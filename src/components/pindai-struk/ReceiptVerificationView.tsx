@@ -120,15 +120,15 @@ export default function ReceiptVerificationView({
       {/* Modal Konfirmasi Batal */}
       {isCancelConfirmOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xs bg-white rounded-3xl p-5 space-y-4 shadow-2xl text-center">
-            <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center mx-auto text-xl">
+          <div className="w-full max-w-xs bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl border border-slate-100 dark:border-slate-700 text-center">
+            <div className="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto text-xl">
               ⚠️
             </div>
             <div className="space-y-1">
-              <h3 className="font-bold text-sm text-slate-900">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Batalkan Verifikasi Struk?
               </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 Perubahan data toko, tanggal, atau nominal yang sudah kamu ubah
                 akan dibatalkan.
               </p>
@@ -137,14 +137,14 @@ export default function ReceiptVerificationView({
               <button
                 type="button"
                 onClick={onCancel}
-                className="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition shadow-md shadow-rose-100"
+                className="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition shadow-md shadow-rose-100 dark:shadow-none cursor-pointer"
               >
                 Ya, Batalkan & Kembali
               </button>
               <button
                 type="button"
                 onClick={() => setIsCancelConfirmOpen(false)}
-                className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition"
+                className="w-full py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition cursor-pointer"
               >
                 Lanjutkan Periksa
               </button>
@@ -180,13 +180,13 @@ export default function ReceiptVerificationView({
       </div>
 
       {/* AI Confidence & Receipt Thumbnail Bar */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl p-3 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between gap-3 transition-colors">
+      <div className="bg-white dark:bg-slate-850 rounded-2xl p-3 border border-slate-200 dark:border-slate-700/80 shadow-2xs flex items-center justify-between gap-3 transition-colors">
         <div className="flex items-center gap-2.5">
           {scanResult.fotoUrl && (
             <button
               type="button"
               onClick={() => setIsPhotoExpanded((prev) => !prev)}
-              className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 overflow-hidden shrink-0 hover:ring-2 hover:ring-blue-400 transition"
+              className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-750 border border-slate-200 dark:border-slate-600 overflow-hidden shrink-0 hover:ring-2 hover:ring-blue-400 transition"
               title="Lihat foto struk asli"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -222,14 +222,14 @@ export default function ReceiptVerificationView({
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs animate-in fade-in cursor-pointer"
           onClick={() => setIsPhotoExpanded(false)}
         >
-          <div className="max-w-sm max-h-[85vh] bg-white rounded-3xl p-3 shadow-2xl relative overflow-hidden">
+          <div className="max-w-sm max-h-[85vh] bg-white dark:bg-slate-850 rounded-3xl p-3 shadow-2xl border border-slate-100 dark:border-slate-700 relative overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={scanResult.fotoUrl}
               alt="Foto Struk Asli"
               className="w-full h-auto max-h-[80vh] object-contain rounded-2xl"
             />
-            <p className="text-center text-[11px] font-bold text-slate-500 pt-2">
+            <p className="text-center text-[11px] font-bold text-slate-500 dark:text-slate-400 pt-2">
               Ketuk di mana saja untuk menutup
             </p>
           </div>
@@ -312,7 +312,7 @@ export default function ReceiptVerificationView({
       {/* Modal Edit Nama Toko, Tanggal, & Nominal */}
       {isEditModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-sm bg-white dark:bg-slate-800 rounded-3xl p-5 space-y-4 shadow-2xl border border-slate-100 dark:border-slate-700">
+          <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl border border-slate-100 dark:border-slate-700">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-2.5">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center">
@@ -455,7 +455,7 @@ export default function ReceiptVerificationView({
       )}
 
       {/* Daftar Rincian Barang yang Terbaca */}
-      <div className="bg-white dark:bg-slate-800 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3 transition-colors">
+      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3 transition-colors">
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700/60 pb-2">
           <div className="flex items-center gap-1.5">
             <FileText size={15} className="text-blue-600 dark:text-blue-400" />
@@ -510,7 +510,7 @@ export default function ReceiptVerificationView({
       {/* Rekomendasi Kategori & Pilihan Aset Dompet */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {/* Kategori Pos */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1.5 transition-colors">
+        <div className="bg-white dark:bg-slate-850 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1.5 transition-colors">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-300">
               <Tag size={14} className="text-amber-500" />
@@ -530,7 +530,7 @@ export default function ReceiptVerificationView({
           <select
             value={selectedCategoryId}
             onChange={(e) => setSelectedCategoryId(e.target.value)}
-            className="w-full p-2 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 bg-slate-50 dark:bg-slate-750 rounded-xl border border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {defaultExpenseCategories.map((cat) => (
               <option key={cat.id} value={cat.id}>
@@ -544,7 +544,7 @@ export default function ReceiptVerificationView({
         </div>
 
         {/* Sumber Aset */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1.5 transition-colors">
+        <div className="bg-white dark:bg-slate-850 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1.5 transition-colors">
           <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-300">
             <Wallet size={14} className="text-blue-600 dark:text-blue-400" />
             <span>Sumber Dana</span>
@@ -552,7 +552,7 @@ export default function ReceiptVerificationView({
           <select
             value={selectedAssetId}
             onChange={(e) => setSelectedAssetId(e.target.value)}
-            className="w-full p-2 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 bg-slate-50 dark:bg-slate-750 rounded-xl border border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {assets.map((ast) => (
               <option key={ast.id} value={ast.id}>

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { serverStore } from "@/server/db/store";
+import { serverStore, ensureStoreInitialized } from "@/server/db/store";
 import { balanceBudgetService } from "@/server/services/balance-budget.service";
 
 /**
@@ -11,6 +11,7 @@ export async function GET(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
+    await ensureStoreInitialized();
     const { id } = await context.params;
     const transactions = serverStore.getTransactions();
     const target = transactions.find((t) => t.id === id);
@@ -63,6 +64,7 @@ export async function DELETE(
   context: { params: Promise<{ id: string }> }
 ) {
   try {
+    await ensureStoreInitialized();
     const { id } = await context.params;
     const transactions = serverStore.getTransactions();
     const target = transactions.find((t) => t.id === id);

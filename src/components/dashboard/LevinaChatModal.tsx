@@ -89,7 +89,7 @@ export default function LevinaChatModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-xs animate-in fade-in">
-      <div className="w-full max-w-lg bg-white rounded-t-3xl sm:rounded-2xl shadow-2xl h-[85vh] sm:h-[600px] flex flex-col overflow-hidden">
+      <div className="w-full max-w-lg bg-white dark:bg-slate-850 rounded-t-3xl sm:rounded-2xl shadow-2xl h-[85vh] sm:h-[600px] flex flex-col overflow-hidden border dark:border-slate-700">
         {/* Header Chat */}
         <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-700 via-indigo-700 to-purple-800 text-white">
           <div className="flex items-center gap-3">
@@ -119,7 +119,7 @@ export default function LevinaChatModal({
         </div>
 
         {/* Daftar Chat */}
-        <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50">
+        <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 dark:bg-slate-900">
           {messages.map((msg) => {
             const isUser = msg.sender === "user";
             return (
@@ -128,7 +128,7 @@ export default function LevinaChatModal({
                 className={`flex gap-2 ${isUser ? "justify-end" : "justify-start"}`}
               >
                 {!isUser && (
-                  <div className="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center text-sm shrink-0 mt-1">
+                  <div className="w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-950/60 flex items-center justify-center text-sm shrink-0 mt-1">
                     🦊
                   </div>
                 )}
@@ -136,13 +136,13 @@ export default function LevinaChatModal({
                   className={`max-w-[78%] rounded-2xl px-3.5 py-2.5 text-xs ${
                     isUser
                       ? "bg-purple-600 text-white rounded-br-xs"
-                      : "bg-white text-slate-800 border border-slate-200/80 rounded-bl-xs shadow-2xs"
+                      : "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200/80 dark:border-slate-700 rounded-bl-xs shadow-2xs"
                   }`}
                 >
                   <p className="leading-relaxed whitespace-pre-wrap">{msg.text}</p>
                   <span
                     className={`block text-[9px] mt-1 ${
-                      isUser ? "text-purple-200 text-right" : "text-slate-400 text-left"
+                      isUser ? "text-purple-200 text-right" : "text-slate-400 dark:text-slate-400 text-left"
                     }`}
                   >
                     {msg.time}
@@ -156,14 +156,14 @@ export default function LevinaChatModal({
         {/* Input Form */}
         <form
           onSubmit={handleSend}
-          className="p-3 border-t border-slate-200 bg-white flex items-center gap-2"
+          className="p-3 border-t border-slate-200 dark:border-slate-750 bg-white dark:bg-slate-850 flex items-center gap-2"
         >
           <input
             type="text"
             placeholder="Tanya LEVINA tentang budget atau pengeluaran..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1 px-3.5 py-2.5 rounded-full border border-slate-200 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="flex-1 px-3.5 py-2.5 rounded-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
           <button
             type="submit"

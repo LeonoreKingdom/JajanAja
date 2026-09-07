@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { serverStore } from "@/server/db/store";
+import { serverStore, ensureStoreInitialized } from "@/server/db/store";
 import { TransactionType } from "@/types/finance";
 
 /**
@@ -8,6 +8,7 @@ import { TransactionType } from "@/types/finance";
  */
 export async function GET(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     const { searchParams } = new URL(request.url);
     const tipe = searchParams.get("tipe") as TransactionType | null;
 

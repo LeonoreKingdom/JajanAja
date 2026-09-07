@@ -3,6 +3,7 @@ import {
   createNewBagiTagihan,
   getAllBagiTagihan,
 } from "@/server/services/split-bill.service";
+import { ensureStoreInitialized } from "@/server/db/store";
 
 /**
  * GET /api/bagi-tagihan
@@ -10,6 +11,7 @@ import {
  */
 export async function GET(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status"); // "aktif" | "selesai" | undefined
     const search = searchParams.get("search")?.toLowerCase().trim();
@@ -75,6 +77,7 @@ export async function GET(request: NextRequest) {
  */
 export async function POST(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     let body: unknown;
     try {
       body = await request.json();

@@ -213,14 +213,14 @@ export default function KoneksiWhatsAppPage() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition active:scale-95 cursor-pointer"
+            className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center transition active:scale-95 cursor-pointer"
           >
             <ArrowLeft size={18} />
           </button>
           <div>
-            <h1 className="text-base font-black text-slate-900 flex items-center gap-1.5">
+            <h1 className="text-base font-black text-slate-900 dark:text-white flex items-center gap-1.5">
               <span>Catat via WhatsApp</span>
-              <span className="text-emerald-600">💬</span>
+              <span className="text-emerald-600 dark:text-emerald-400">💬</span>
             </h1>
             <p className="text-[11px] text-slate-400 font-medium">
               Ketik jajan di WhatsApp, tercatat otomatis
@@ -228,14 +228,14 @@ export default function KoneksiWhatsAppPage() {
           </div>
         </div>
 
-        <span className="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full flex items-center gap-1">
+        <span className="text-[10px] font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-full flex items-center gap-1">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span>Cloud API Active</span>
         </span>
       </div>
 
       {/* Card Status Koneksi Nomor WhatsApp */}
-      <div className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white rounded-3xl p-5 shadow-lg shadow-emerald-200/50 space-y-4">
+      <div className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white rounded-3xl p-5 shadow-lg shadow-emerald-200/50 dark:shadow-none space-y-4">
         <div className="flex items-start justify-between">
           <div className="space-y-1">
             <span className="text-[10px] font-bold bg-white/20 text-white px-2 py-0.5 rounded-md">
@@ -276,12 +276,12 @@ export default function KoneksiWhatsAppPage() {
               value={inputNumber}
               onChange={(e) => setInputNumber(e.target.value)}
               placeholder="08123456789"
-              className="w-full px-3 py-2 bg-white text-slate-900 rounded-xl text-xs font-bold focus:outline-none"
+              className="w-full px-3 py-2 bg-white dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl text-xs font-bold focus:outline-none"
             />
             <div className="flex items-center gap-2">
               <button
                 type="submit"
-                className="flex-1 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition"
+                className="flex-1 py-2 bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 text-white text-xs font-bold rounded-xl transition cursor-pointer"
               >
                 Simpan & Hubungkan
               </button>
@@ -291,14 +291,14 @@ export default function KoneksiWhatsAppPage() {
       </div>
 
       {/* Simulator Interaktif Chat WhatsApp */}
-      <div className="bg-white rounded-3xl p-4 border border-slate-200 shadow-2xs space-y-3">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+        <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <div className="w-7 h-7 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
               <MessageSquare size={15} />
             </div>
             <div>
-              <h3 className="font-bold text-xs text-slate-800">
+              <h3 className="font-bold text-xs text-slate-800 dark:text-white">
                 Simulasi Chat WhatsApp Bot
               </h3>
               <p className="text-[10px] text-slate-400">
@@ -306,13 +306,13 @@ export default function KoneksiWhatsAppPage() {
               </p>
             </div>
           </div>
-          <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-md">
+          <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-md">
             Online 🟢
           </span>
         </div>
 
         {/* Bubble Chat Display */}
-        <div className="bg-[#EFEAE2] p-3 rounded-2xl min-h-[160px] max-h-[220px] overflow-y-auto space-y-2.5 border border-slate-200/60 font-sans text-xs">
+        <div className="bg-[#EFEAE2] dark:bg-slate-900 p-3 rounded-2xl min-h-[160px] max-h-[220px] overflow-y-auto space-y-2.5 border border-slate-200/60 dark:border-slate-700/60 font-sans text-xs">
           {chatMessages.map((msg) => (
             <div
               key={msg.id}
@@ -321,12 +321,12 @@ export default function KoneksiWhatsAppPage() {
               <div
                 className={`max-w-[85%] rounded-2xl px-3 py-2 text-xs shadow-xs space-y-1 ${
                   msg.sender === "user"
-                    ? "bg-[#D9FDD3] text-slate-900 rounded-tr-none"
-                    : "bg-white text-slate-900 rounded-tl-none border border-slate-200/50"
+                    ? "bg-[#D9FDD3] dark:bg-emerald-950/70 text-slate-900 dark:text-emerald-100 rounded-tr-none border border-transparent dark:border-emerald-800/40"
+                    : "bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-tl-none border border-slate-200/50 dark:border-slate-700"
                 }`}
               >
                 <p className="whitespace-pre-line leading-relaxed">{msg.text}</p>
-                <p className="text-[9px] text-slate-400 text-right">{msg.timestamp}</p>
+                <p className="text-[9px] text-slate-400 dark:text-slate-400 text-right">{msg.timestamp}</p>
               </div>
             </div>
           ))}
@@ -339,11 +339,11 @@ export default function KoneksiWhatsAppPage() {
             placeholder="Coba: 'kopi 25rb' atau 'makan padang 35000'..."
             value={chatInput}
             onChange={(e) => setChatInput(e.target.value)}
-            className="flex-1 px-3 py-2 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
           />
           <button
             type="submit"
-            className="w-9 h-9 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center transition active:scale-95 shrink-0 cursor-pointer shadow-md shadow-emerald-200"
+            className="w-9 h-9 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center transition active:scale-95 shrink-0 cursor-pointer shadow-md shadow-emerald-200 dark:shadow-none"
             title="Kirim pesan simulasi"
           >
             <Send size={15} />
@@ -356,21 +356,21 @@ export default function KoneksiWhatsAppPage() {
           <button
             type="button"
             onClick={() => setChatInput("kopi 20rb")}
-            className="px-2.5 py-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 rounded-lg text-slate-600 whitespace-nowrap transition"
+            className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-700 dark:hover:text-emerald-300 rounded-lg text-slate-600 dark:text-slate-300 whitespace-nowrap transition cursor-pointer"
           >
             ☕ kopi 20rb
           </button>
           <button
             type="button"
             onClick={() => setChatInput("makan siang 35000")}
-            className="px-2.5 py-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 rounded-lg text-slate-600 whitespace-nowrap transition"
+            className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-700 dark:hover:text-emerald-300 rounded-lg text-slate-600 dark:text-slate-300 whitespace-nowrap transition cursor-pointer"
           >
             🍛 makan siang 35000
           </button>
           <button
             type="button"
             onClick={() => setChatInput("sisa budget")}
-            className="px-2.5 py-1 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 rounded-lg text-slate-600 whitespace-nowrap transition"
+            className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 hover:text-emerald-700 dark:hover:text-emerald-300 rounded-lg text-slate-600 dark:text-slate-300 whitespace-nowrap transition cursor-pointer"
           >
             📊 sisa budget
           </button>
@@ -378,47 +378,47 @@ export default function KoneksiWhatsAppPage() {
       </div>
 
       {/* Panduan Format Pesan (Cheat Sheet) */}
-      <div className="bg-white rounded-3xl p-4 border border-slate-200 shadow-2xs space-y-3">
-        <div className="flex items-center gap-2 border-b border-slate-100 pb-2">
+      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+        <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
           <Zap size={16} className="text-amber-500" />
-          <h3 className="font-bold text-xs text-slate-800 uppercase tracking-wider">
+          <h3 className="font-bold text-xs text-slate-800 dark:text-white uppercase tracking-wider">
             Panduan Format Chat JajanAja
           </h3>
         </div>
 
         <div className="space-y-2 text-xs">
-          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-            <span className="font-bold text-slate-800 block text-[11px]">
+          <div className="p-2.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/60 space-y-1">
+            <span className="font-bold text-slate-800 dark:text-slate-200 block text-[11px]">
               1. Catat Pengeluaran Kilat
             </span>
-            <p className="text-slate-500 text-[11px]">
+            <p className="text-slate-500 dark:text-slate-400 text-[11px]">
               Cukup ketik nama jajan diikuti nominalnya:
             </p>
-            <div className="font-mono text-[11px] text-emerald-700 bg-white p-1.5 rounded-lg border border-slate-200">
+            <div className="font-mono text-[11px] text-emerald-700 dark:text-emerald-300 bg-white dark:bg-slate-900 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
               kopi 25rb <br />
               makan mie ayam 22000 <br />
               bensin pertamax 50rb
             </div>
           </div>
 
-          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-            <span className="font-bold text-slate-800 block text-[11px]">
+          <div className="p-2.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/60 space-y-1">
+            <span className="font-bold text-slate-800 dark:text-slate-200 block text-[11px]">
               2. Catat Pemasukan (NabungAja)
             </span>
-            <p className="text-slate-500 text-[11px]">
+            <p className="text-slate-500 dark:text-slate-400 text-[11px]">
               Sebutkan kata kunci seperti gaji atau freelance:
             </p>
-            <div className="font-mono text-[11px] text-emerald-700 bg-white p-1.5 rounded-lg border border-slate-200">
+            <div className="font-mono text-[11px] text-emerald-700 dark:text-emerald-300 bg-white dark:bg-slate-900 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
               gaji utama 8500000 <br />
               freelance desain 1.5jt
             </div>
           </div>
 
-          <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1">
-            <span className="font-bold text-slate-800 block text-[11px]">
+          <div className="p-2.5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-700/60 space-y-1">
+            <span className="font-bold text-slate-800 dark:text-slate-200 block text-[11px]">
               3. Cek Status Budget & Saldo
             </span>
-            <div className="font-mono text-[11px] text-emerald-700 bg-white p-1.5 rounded-lg border border-slate-200">
+            <div className="font-mono text-[11px] text-emerald-700 dark:text-emerald-300 bg-white dark:bg-slate-900 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
               sisa budget <br />
               rekap hari ini
             </div>
@@ -428,24 +428,24 @@ export default function KoneksiWhatsAppPage() {
 
       {/* Riwayat Transaksi Tercatat dari WhatsApp */}
       {whatsappTransactions.length > 0 && (
-        <div className="bg-white rounded-3xl p-4 border border-slate-200 shadow-2xs space-y-3">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-            <h3 className="font-bold text-xs text-slate-800 uppercase tracking-wider">
+        <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+          <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+            <h3 className="font-bold text-xs text-slate-800 dark:text-white uppercase tracking-wider">
               Tercatat via WhatsApp ({whatsappTransactions.length})
             </h3>
             <Link
               href="/transaksi"
-              className="text-[11px] text-blue-600 font-bold hover:underline"
+              className="text-[11px] text-blue-600 dark:text-blue-400 font-bold hover:underline"
             >
               Lihat Semua
             </Link>
           </div>
 
-          <div className="divide-y divide-slate-100 space-y-1.5">
+          <div className="divide-y divide-slate-100 dark:divide-slate-800 space-y-1.5">
             {whatsappTransactions.slice(0, 3).map((tx) => (
               <div key={tx.id} className="pt-2 first:pt-0 flex items-center justify-between text-xs">
                 <div>
-                  <p className="font-bold text-slate-800">{tx.catatan || tx.kategori?.nama || "Transaksi WhatsApp"}</p>
+                  <p className="font-bold text-slate-800 dark:text-slate-200">{tx.catatan || tx.kategori?.nama || "Transaksi WhatsApp"}</p>
                   <p className="text-[10px] text-slate-400">
                     {new Date(tx.tanggal).toLocaleDateString("id-ID", {
                       day: "numeric",
@@ -457,7 +457,7 @@ export default function KoneksiWhatsAppPage() {
                 </div>
                 <span
                   className={`font-black ${
-                    tx.tipe === "pemasukan" ? "text-emerald-600" : "text-rose-600"
+                    tx.tipe === "pemasukan" ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"
                   }`}
                 >
                   {tx.tipe === "pemasukan" ? "+" : "-"}

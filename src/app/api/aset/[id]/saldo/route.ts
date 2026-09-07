@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { serverStore } from "@/server/db/store";
+import { serverStore, ensureStoreInitialized } from "@/server/db/store";
 import { validateUpdateAssetBalance } from "@/server/schemas/asset.schema";
 import { TransactionRecord } from "@/server/schemas/transaction.schema";
 
@@ -13,6 +13,7 @@ interface RouteParams {
  */
 export async function PATCH(request: NextRequest, { params }: RouteParams) {
   try {
+    await ensureStoreInitialized();
     const { id } = await params;
 
     const asset = serverStore.getAssetById(id);
@@ -84,9 +85,8 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
         updatedAt: new Date().toISOString(),
       };
 
-      // Tambahkan transaksi ke store tanpa double-mutating saldo yang sudah disesuaikan
-      const txs = serverStore.getTransactions();
-      txs.unshift(adjustmentTransaction);
+      // Tambahkan transaksi ke store dan database tanpa double-mutating saldo yang sudah disesuaikan
+      serverStore.addRawTransaction(adjustmentTransaction);
     }
 
     return NextResponse.json({

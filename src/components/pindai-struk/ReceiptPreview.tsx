@@ -50,20 +50,20 @@ export default function ReceiptPreview({
       {/* Retake Selection Modal */}
       {isRetakeModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xs bg-white rounded-3xl p-5 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-              <h3 className="font-bold text-sm text-slate-900">
+          <div className="w-full max-w-xs bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl border border-slate-100 dark:border-slate-700">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-2">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Ambil Ulang Struk
               </h3>
               <button
                 type="button"
                 onClick={() => setIsRetakeModalOpen(false)}
-                className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800"
+                className="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
               >
                 <X size={15} />
               </button>
             </div>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
               Pilih metode untuk mengambil atau mengunggah ulang foto struk baru:
             </p>
             <div className="space-y-2">
@@ -73,14 +73,14 @@ export default function ReceiptPreview({
                   setIsRetakeModalOpen(false);
                   onRetake("kamera");
                 }}
-                className="w-full p-3 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-700 font-bold text-xs flex items-center gap-3 transition"
+                className="w-full p-3 rounded-2xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/40 dark:hover:bg-blue-900/50 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center gap-3 transition"
               >
                 <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
                   <Camera size={16} />
                 </div>
                 <div className="text-left">
                   <span>Foto Ulang via Kamera</span>
-                  <span className="block text-[10px] font-normal text-blue-600/80">
+                  <span className="block text-[10px] font-normal text-blue-600/80 dark:text-blue-400">
                     Buka kamera langsung
                   </span>
                 </div>
@@ -92,14 +92,14 @@ export default function ReceiptPreview({
                   setIsRetakeModalOpen(false);
                   onRetake("unggah");
                 }}
-                className="w-full p-3 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold text-xs flex items-center gap-3 transition"
+                className="w-full p-3 rounded-2xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs flex items-center gap-3 transition"
               >
                 <div className="w-8 h-8 rounded-xl bg-slate-700 text-white flex items-center justify-center shrink-0">
                   <UploadCloud size={16} />
                 </div>
                 <div className="text-left">
                   <span>Pilih dari Galeri / File</span>
-                  <span className="block text-[10px] font-normal text-slate-500">
+                  <span className="block text-[10px] font-normal text-slate-500 dark:text-slate-400">
                     Cari foto lain atau struk demo
                   </span>
                 </div>
@@ -202,7 +202,7 @@ export default function ReceiptPreview({
       </div>
 
       {/* Quality Check Card */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 transition-colors">
+      <div className="bg-white dark:bg-slate-850 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-2 transition-colors">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-slate-200">
             <FileCheck size={15} className="text-blue-600 dark:text-blue-400" />

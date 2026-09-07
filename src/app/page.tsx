@@ -14,20 +14,24 @@ import MonthlyFinancialChart from "@/components/dashboard/MonthlyFinancialChart"
 import BottomNav from "@/components/layout/BottomNav";
 import TransactionModal from "@/components/dashboard/TransactionModal";
 import LevinaChatModal from "@/components/dashboard/LevinaChatModal";
-import {
-  mockCategories,
-  mockDashboardData,
-  mockUser,
-} from "@/lib/mock-data";
-import { LevinaInsight, TransactionType } from "@/types/finance";
+import { LevinaInsight, TransactionType, User } from "@/types/finance";
 import { useTransaction } from "@/context/TransactionContext";
 import { formatRupiah } from "@/lib/utils";
+
+const defaultUser: User = {
+  id: "user-1",
+  nama: "Rian Aditya",
+  email: "rian.aditya@example.com",
+  nomorWhatsApp: "081234567890",
+  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+};
 
 export default function DashboardPage() {
   const {
     transactions,
     assets,
     budgets,
+    categories,
     totalSaldo,
     totalPemasukanBulanIni,
     totalPengeluaranBulanIni,
@@ -38,16 +42,32 @@ export default function DashboardPage() {
 
   const router = useRouter();
 
-  // Dynamic LEVINA insight reflecting receipt scan and financial conditions
+  // Dynamic LEVINA insight reflecting receipt scan and real financial conditions
   const latestReceiptTx = transactions.find((t) => t.sumber === "pindai-struk");
-  const currentInsight: LevinaInsight = latestReceiptTx
-    ? {
-        sapaan: "Struk Berhasil Terdata!",
-        pesan: `Transaksi dari ${latestReceiptTx.catatan || "struk"} sebesar ${formatRupiah(latestReceiptTx.jumlah)} sudah masuk ke dashboard dan memotong saldo pos budgetmu.`,
-        tips: "Foto struk yang jelas membuat pencatatan pengeluaran harianmu selalu akurat 100%.",
-        mood: "senang",
-      }
-    : mockDashboardData.insightLevina;
+  let currentInsight: LevinaInsight;
+
+  if (latestReceiptTx) {
+    currentInsight = {
+      sapaan: "Struk Berhasil Terdata!",
+      pesan: `Transaksi dari ${latestReceiptTx.catatan || "struk"} sebesar ${formatRupiah(latestReceiptTx.jumlah)} sudah masuk ke database Turso dan memotong saldo pos budgetmu.`,
+      tips: "Foto struk yang jelas membuat pencatatan pengeluaran harianmu selalu akurat 100%.",
+      mood: "senang",
+    };
+  } else if (totalBudgetBulanIni > 0 && totalPengeluaranBulanIni > totalBudgetBulanIni) {
+    currentInsight = {
+      sapaan: "Perhatian Pengeluaran! ⚠️",
+      pesan: `Total pengeluaranmu (${formatRupiah(totalPengeluaranBulanIni)}) telah melebihi alokasi budget bulanan (${formatRupiah(totalBudgetBulanIni)}).`,
+      tips: "Coba tinjau pos pengeluaran sekunder dan batasi pengeluaran non-primer beberapa hari ke depan.",
+      mood: "waspada",
+    };
+  } else {
+    currentInsight = {
+      sapaan: "Halo, Semangat Finansial! ✨",
+      pesan: `Saldo aktifmu saat ini ${formatRupiah(totalSaldo)} dengan sisa budget bulan ini ${formatRupiah(sisaBudgetBulanIni)}.`,
+      tips: "Trik hemat: Catat setiap jajan harianmu agar riwayat finansial selalu sinkron dengan database.",
+      mood: "senang",
+    };
+  }
 
   // Modal states
   const [isTransactionModalOpen, setIsTransactionModalOpen] = useState(false);
@@ -79,14 +99,14 @@ export default function DashboardPage() {
     router.push("/bagi-tagihan");
   };
 
-  const handleSaveTransaction = (newTx: {
+  const handleSaveTransaction = async (newTx: {
     tipe: TransactionType;
     jumlah: number;
     categoryId: string;
     assetId: string;
     catatan: string;
   }) => {
-    addTransaction({
+    const res = await addTransaction({
       tipe: newTx.tipe,
       jumlah: newTx.jumlah,
       categoryId: newTx.categoryId,
@@ -95,24 +115,28 @@ export default function DashboardPage() {
       sumber: "manual",
     });
 
-    showToast(
-      `✓ Berhasil mencatat ${
-        newTx.tipe === "pengeluaran" ? "JajanAja" : "NabungAja"
-      }!`
-    );
+    if (res.success) {
+      showToast(
+        `✓ Berhasil mencatat ${
+          newTx.tipe === "pengeluaran" ? "JajanAja" : "NabungAja"
+        } sebesar ${formatRupiah(newTx.jumlah)} ke database!`
+      );
+    } else {
+      showToast(`Gagal mencatat transaksi: ${res.error || "Terjadi kesalahan"}`);
+    }
   };
 
   return (
     <div className="flex-1 flex flex-col p-4 space-y-4">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg border border-slate-700 animate-in fade-in slide-in-from-top-2">
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg border border-slate-700 animate-in fade-in slide-in-from-top-2">
           {toastMessage}
         </div>
       )}
 
       {/* Header Profile */}
-      <Header user={mockUser} />
+      <Header user={defaultUser} />
 
       {/* Ringkasan Saldo, Pengeluaran & Pemasukan */}
       <SummaryCards
@@ -175,7 +199,7 @@ export default function DashboardPage() {
         isOpen={isTransactionModalOpen}
         onClose={() => setIsTransactionModalOpen(false)}
         type={transactionType}
-        categories={mockCategories}
+        categories={categories}
         assets={assets}
         onSave={handleSaveTransaction}
       />

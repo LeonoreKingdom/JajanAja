@@ -481,7 +481,7 @@ export function parseReceiptText(
           }
         }
       }
-      total = allPrices.length > 0 ? Math.max(...allPrices) : 50000;
+      total = allPrices.length > 0 ? Math.max(...allPrices) : 0;
     }
   }
 
@@ -489,11 +489,11 @@ export function parseReceiptText(
     subtotal = sumItems > 0 ? sumItems : total;
   }
 
-  // Jika tidak ada item yang terurai, buat 1 item ringkasan
-  if (items.length === 0) {
+  // Jika tidak ada item yang terurai tapi ada total, buat 1 item ringkasan
+  if (items.length === 0 && total > 0) {
     items.push({
       id: "item-1",
-      nama: `Belanja ${namaToko}`,
+      nama: namaToko ? `Belanja ${namaToko}` : "Item Belanja",
       qty: 1,
       harga: total,
       subtotal: total,

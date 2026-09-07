@@ -95,23 +95,23 @@ export default function TransactionModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-xs transition-opacity animate-in fade-in">
-      <div className="w-full max-w-lg bg-white rounded-t-3xl sm:rounded-2xl shadow-xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div className="w-full max-w-lg bg-white dark:bg-slate-850 rounded-t-3xl sm:rounded-2xl shadow-xl overflow-hidden max-h-[90vh] flex flex-col border dark:border-slate-700">
         {/* Header Modal */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-100">
+        <div className="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-700">
           <div className="flex items-center gap-2">
             <span
               className={`w-3 h-3 rounded-full ${
                 isExpense ? "bg-rose-500" : "bg-emerald-500"
               }`}
             />
-            <h3 className="font-bold text-base text-slate-900">
+            <h3 className="font-bold text-base text-slate-900 dark:text-white">
               {isExpense ? "Catat JajanAja (Pengeluaran)" : "Catat NabungAja (Pemasukan)"}
             </h3>
           </div>
           <button
             onClick={onClose}
             type="button"
-            className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800 transition"
+            className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition"
           >
             <X size={18} />
           </button>
@@ -120,7 +120,7 @@ export default function TransactionModal({
         <form onSubmit={handleSubmit} className="p-4 space-y-4 overflow-y-auto">
           {/* Nominal Input */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Nominal (Rp)
             </label>
             <div className="relative">
@@ -134,7 +134,7 @@ export default function TransactionModal({
                 placeholder="0"
                 value={jumlah}
                 onChange={handleAmountChange}
-                className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-2xl font-black text-slate-900 tracking-tight"
+                className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-2xl font-black text-slate-900 dark:text-white tracking-tight"
                 autoFocus
               />
             </div>
@@ -142,7 +142,7 @@ export default function TransactionModal({
 
           {/* Kategori Selector */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
               Pilih Kategori
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -155,8 +155,8 @@ export default function TransactionModal({
                     onClick={() => setCategoryId(cat.id)}
                     className={`flex items-center gap-2 p-2 rounded-xl border text-xs font-semibold transition text-left ${
                       isSelected
-                        ? "border-emerald-600 bg-emerald-50/70 text-emerald-900 ring-1 ring-emerald-500"
-                        : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+                        ? "border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 ring-1 ring-emerald-500"
+                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750"
                     }`}
                   >
                     <div
@@ -174,7 +174,7 @@ export default function TransactionModal({
 
           {/* Sumber Aset / Dompet */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
               {isExpense ? "Bayar Dari Aset" : "Masuk Ke Aset"}
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -187,8 +187,8 @@ export default function TransactionModal({
                     onClick={() => setAssetId(ast.id)}
                     className={`p-2.5 rounded-xl border text-xs font-semibold text-left transition ${
                       isSelected
-                        ? "border-emerald-600 bg-emerald-50/70 text-emerald-900 ring-1 ring-emerald-500"
-                        : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
+                        ? "border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 ring-1 ring-emerald-500"
+                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750"
                     }`}
                   >
                     <div className="font-bold truncate">{ast.nama}</div>
@@ -203,7 +203,7 @@ export default function TransactionModal({
 
           {/* Catatan / Keterangan */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Catatan (Opsional)
             </label>
             <input
@@ -211,13 +211,13 @@ export default function TransactionModal({
               placeholder="Contoh: Kopi bareng tim, Makan siang padang..."
               value={catatan}
               onChange={(e) => setCatatan(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-xs text-slate-800"
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-xs text-slate-800 dark:text-slate-100"
             />
           </div>
 
           {/* Pesan Validasi Error */}
           {error && (
-            <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl flex items-center gap-2 text-xs font-bold text-rose-600 animate-in fade-in">
+            <div className="p-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 rounded-xl flex items-center gap-2 text-xs font-bold text-rose-600 dark:text-rose-400 animate-in fade-in">
               <AlertCircle size={15} className="shrink-0" />
               <span>{error}</span>
             </div>
@@ -229,8 +229,8 @@ export default function TransactionModal({
               type="submit"
               className={`w-full py-3 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2 shadow-md transition active:scale-[0.99] ${
                 isExpense
-                  ? "bg-rose-600 hover:bg-rose-700 shadow-rose-200"
-                  : "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-200"
+                  ? "bg-rose-600 hover:bg-rose-700 shadow-rose-200 dark:shadow-none"
+                  : "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-200 dark:shadow-none"
               }`}
             >
               <Check size={18} />

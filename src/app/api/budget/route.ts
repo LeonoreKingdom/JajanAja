@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { serverStore } from "@/server/db/store";
+import { serverStore, ensureStoreInitialized } from "@/server/db/store";
 import { validateCreateBudget } from "@/server/schemas/budget.schema";
 import { balanceBudgetService } from "@/server/services/balance-budget.service";
 
@@ -9,6 +9,7 @@ import { balanceBudgetService } from "@/server/services/balance-budget.service";
  */
 export async function GET(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     const { searchParams } = new URL(request.url);
     const now = new Date();
     const currentMonthStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
@@ -38,6 +39,7 @@ export async function GET(request: NextRequest) {
  */
 export async function POST(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     let body: unknown;
     try {
       body = await request.json();

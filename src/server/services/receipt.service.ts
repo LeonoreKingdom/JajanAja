@@ -195,9 +195,39 @@ export async function scanReceiptImage(request: ScanReceiptRequest): Promise<{
     } catch (err) {
       console.warn("Ekstraksi OCR gagal, menggunakan fallback parser:", err);
     }
+
+    // Jika OCR tidak menghasilkan teks yang jelas atau gagal, kembalikan draft kosong bersih
+    // dengan foto pengguna agar pengguna dapat memverifikasi/mengisi nama toko dan nominal secara manual
+    const scanId = `scan-${Date.now()}`;
+    const cleanDraft: ReceiptScanResult = {
+      id: scanId,
+      namaToko: "",
+      tanggal: dateStr,
+      waktu: timeStr,
+      nomorStruk: `TRX-${Math.floor(100000 + Math.random() * 900000)}`,
+      items: [],
+      subtotal: 0,
+      pajak: 0,
+      diskon: 0,
+      total: 0,
+      kategoriSaranId: "cat-1",
+      kategoriSaranNama: "Makan & Minum",
+      confidence: 60,
+      fotoUrl: request.image,
+    };
+
+    const draftRecord: ReceiptScanRecord = {
+      ...cleanDraft,
+      status: "draft",
+      createdAt: now.toISOString(),
+      updatedAt: now.toISOString(),
+    };
+
+    serverStore.saveReceiptScan(draftRecord);
+    return { scanResult: cleanDraft, record: draftRecord };
   }
 
-  // 2. Preset contoh struk untuk demonstrasi cepat
+  // 2. Preset contoh struk untuk demonstrasi cepat (hanya jika memang preset sample)
   let merchantName = "Toko Belanja";
   let items: ReceiptItem[] = [
     { id: "item-1", nama: "Belanja Toko", qty: 1, harga: 50000, subtotal: 50000 },

@@ -198,8 +198,8 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
     <div className="space-y-4">
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Input Nominal Pemasukan */}
-        <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-50/80 via-teal-50/40 to-cyan-50/30 border border-emerald-100 shadow-2xs">
-          <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+        <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-50/80 via-teal-50/40 to-cyan-50/30 dark:from-emerald-950/30 dark:via-teal-950/20 dark:to-cyan-950/10 border border-emerald-100 dark:border-emerald-900/40 shadow-2xs">
+          <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
             Nominal NabungAja (Pemasukan)
           </label>
           <div className="relative">
@@ -213,7 +213,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
               placeholder="0"
               value={rawAmount}
               onChange={handleAmountChange}
-              className="w-full pl-14 pr-4 py-3 bg-white rounded-xl border border-emerald-200/80 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-2xl sm:text-3xl font-black text-slate-900 tracking-tight shadow-xs"
+              className="w-full pl-14 pr-4 py-3 bg-white dark:bg-slate-800 rounded-xl border border-emerald-200/80 dark:border-emerald-900/50 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight shadow-xs"
               autoFocus
             />
           </div>
@@ -225,7 +225,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                 key={amt}
                 type="button"
                 onClick={() => addPreset(amt)}
-                className="px-2.5 py-1 bg-white hover:bg-emerald-50 border border-slate-200 rounded-lg text-[11px] font-bold text-slate-700 whitespace-nowrap shadow-2xs transition active:scale-95"
+                className="px-2.5 py-1 bg-white dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-lg text-[11px] font-bold text-slate-700 dark:text-slate-300 whitespace-nowrap shadow-2xs transition active:scale-95"
               >
                 +{formatRupiah(amt).replace("Rp", "").trim()}
               </button>
@@ -233,7 +233,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
           </div>
 
           {errors.nominal && (
-            <p className="text-xs font-bold text-rose-600 flex items-center gap-1.5 mt-2.5 bg-rose-50/90 p-2 rounded-lg border border-rose-200 animate-in fade-in">
+            <p className="text-xs font-bold text-rose-600 flex items-center gap-1.5 mt-2.5 bg-rose-50/90 dark:bg-rose-950/40 p-2 rounded-lg border border-rose-200 dark:border-rose-800 animate-in fade-in">
               <AlertCircle size={14} className="shrink-0" />
               <span>{errors.nominal}</span>
             </p>
@@ -241,15 +241,15 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
         </div>
 
         {/* Pilihan Kategori Pemasukan */}
-        <div className="bg-white p-4 rounded-2xl border border-slate-100 shadow-xs space-y-2.5">
+        <div className="bg-white dark:bg-slate-850 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-2.5">
           <div className="flex items-center justify-between">
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Pilih Kategori Pemasukan
             </label>
             <button
               type="button"
               onClick={() => setIsAddCatModalOpen(true)}
-              className="text-xs font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded-md transition"
+              className="text-xs font-bold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-md transition"
             >
               <Plus size={13} />
               <span>Tambah Kategori</span>
@@ -270,8 +270,8 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                   }}
                   className={`p-3 rounded-xl border text-left transition relative flex flex-col justify-between active:scale-95 ${
                     isSelected
-                      ? "border-emerald-600 bg-emerald-50/80 ring-2 ring-emerald-500"
-                      : "border-slate-200 bg-slate-50/50 hover:bg-slate-100"
+                      ? "border-emerald-600 bg-emerald-50/80 dark:bg-emerald-950/40 ring-2 ring-emerald-500"
+                      : "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800"
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -281,11 +281,11 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                     >
                       <IconHelper name={cat.ikon} size={15} />
                     </div>
-                    <span className="text-xs font-bold text-slate-800 truncate">
+                    <span className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">
                       {cat.nama}
                     </span>
                   </div>
-                  <span className="text-[10px] text-emerald-700 font-semibold mt-2 block">
+                  <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-semibold mt-2 block">
                     Pemasukan
                   </span>
                 </button>
@@ -294,7 +294,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
           </div>
 
           {errors.category && (
-            <p className="text-xs font-bold text-rose-600 flex items-center gap-1.5 mt-2 bg-rose-50/90 p-2 rounded-lg border border-rose-200 animate-in fade-in">
+            <p className="text-xs font-bold text-rose-600 flex items-center gap-1.5 mt-2 bg-rose-50/90 dark:bg-rose-950/40 p-2 rounded-lg border border-rose-200 dark:border-rose-800 animate-in fade-in">
               <AlertCircle size={14} className="shrink-0" />
               <span>{errors.category}</span>
             </p>
@@ -302,19 +302,19 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
         </div>
 
         {/* Pilihan Aset Tujuan Masuk dengan Filter & Live Proyeksi Saldo */}
-        <div className="bg-white p-4 rounded-2xl border border-slate-100 shadow-xs space-y-3">
+        <div className="bg-white dark:bg-slate-850 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-3">
           <div className="flex items-center justify-between">
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
                 Pilih Aset Tujuan Pemasukan
               </label>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-slate-400 dark:text-slate-400">
                 Pilih rekening atau dompet tempat dana masuk
               </p>
             </div>
 
             {/* Filter Jenis Aset */}
-            <div className="flex items-center p-0.5 bg-slate-100 rounded-lg text-[10px] font-semibold">
+            <div className="flex items-center p-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-[10px] font-semibold">
               {(["semua", "bank", "e-wallet", "tunai"] as const).map((type) => (
                 <button
                   key={type}
@@ -322,8 +322,8 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                   onClick={() => setAssetFilter(type)}
                   className={`px-2 py-0.5 rounded-md capitalize transition ${
                     assetFilter === type
-                      ? "bg-white text-emerald-800 shadow-2xs font-bold"
-                      : "text-slate-500"
+                      ? "bg-white dark:bg-slate-700 text-emerald-800 dark:text-emerald-300 shadow-2xs font-bold"
+                      : "text-slate-500 dark:text-slate-400"
                   }`}
                 >
                   {type}
@@ -347,17 +347,17 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                   }}
                   className={`p-3 rounded-xl border text-left transition relative flex flex-col justify-between active:scale-[0.99] ${
                     isSelected
-                      ? "border-emerald-600 bg-emerald-50/70 ring-2 ring-emerald-500 shadow-2xs"
-                      : "border-slate-200 bg-slate-50/40 hover:bg-slate-100/70 text-slate-700"
+                      ? "border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 ring-2 ring-emerald-500 shadow-2xs"
+                      : "border-slate-200 dark:border-slate-700 bg-slate-50/40 dark:bg-slate-800/60 hover:bg-slate-100/70 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-700 shadow-2xs">
+                      <div className="w-7 h-7 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 shadow-2xs">
                         {getAssetIcon(ast.jenis)}
                       </div>
                       <div>
-                        <span className="text-xs font-bold text-slate-900 block truncate">
+                        <span className="text-xs font-bold text-slate-900 dark:text-white block truncate">
                           {ast.nama}
                         </span>
                         <span className="text-[10px] uppercase font-semibold text-slate-400">
@@ -374,22 +374,22 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                   </div>
 
                   {/* Saldo Saat ini vs Proyeksi */}
-                  <div className="mt-2.5 pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs">
+                  <div className="mt-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-700 flex items-center justify-between text-xs">
                     <div>
                       <span className="text-[10px] text-slate-400 block">
                         Saldo saat ini:
                       </span>
-                      <span className="font-bold text-slate-800">
+                      <span className="font-bold text-slate-800 dark:text-slate-200">
                         {formatRupiah(ast.saldo)}
                       </span>
                     </div>
 
                     {parsedAmount > 0 && isSelected && (
                       <div className="text-right">
-                        <span className="text-[10px] text-emerald-600 font-bold block flex items-center gap-0.5 justify-end">
+                        <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold block flex items-center gap-0.5 justify-end">
                           <ArrowRight size={10} /> Menjadi:
                         </span>
-                        <span className="font-extrabold text-emerald-700">
+                        <span className="font-extrabold text-emerald-700 dark:text-emerald-400">
                           {formatRupiah(projectedSaldo)}
                         </span>
                       </div>
@@ -401,7 +401,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
           </div>
 
           {errors.asset && (
-            <p className="text-xs font-bold text-rose-600 flex items-center gap-1.5 mt-2 bg-rose-50/90 p-2 rounded-lg border border-rose-200 animate-in fade-in">
+            <p className="text-xs font-bold text-rose-600 flex items-center gap-1.5 mt-2 bg-rose-50/90 dark:bg-rose-950/40 p-2 rounded-lg border border-rose-200 dark:border-rose-800 animate-in fade-in">
               <AlertCircle size={14} className="shrink-0" />
               <span>{errors.asset}</span>
             </p>
@@ -409,9 +409,9 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
         </div>
 
         {/* Tanggal & Catatan & Tag */}
-        <div className="bg-white p-4 rounded-2xl border border-slate-100 shadow-xs space-y-3">
+        <div className="bg-white dark:bg-slate-850 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-3">
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Tanggal Diterima
             </label>
             <div className="relative">
@@ -426,11 +426,11 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                   setTanggal(e.target.value);
                   if (errors.tanggal) setErrors((prev) => ({ ...prev, tanggal: undefined }));
                 }}
-                className="w-full pl-9 pr-3 py-2 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800 font-semibold focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                className="w-full pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 font-semibold focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
             {errors.tanggal && (
-              <p className="text-xs font-bold text-rose-600 flex items-center gap-1.5 mt-1 bg-rose-50/90 p-2 rounded-lg border border-rose-200 animate-in fade-in">
+              <p className="text-xs font-bold text-rose-600 flex items-center gap-1.5 mt-1 bg-rose-50/90 dark:bg-rose-950/40 p-2 rounded-lg border border-rose-200 dark:border-rose-800 animate-in fade-in">
                 <AlertCircle size={14} className="shrink-0" />
                 <span>{errors.tanggal}</span>
               </p>
@@ -438,7 +438,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Catatan Pemasukan
             </label>
             <input
@@ -446,13 +446,13 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
               placeholder="Contoh: Gaji bulan September, DP Project Website..."
               value={catatan}
               onChange={(e) => setCatatan(e.target.value)}
-              className="w-full px-3 py-2.5 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
             />
           </div>
 
           {/* Quick Label Tags */}
           <div>
-            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+            <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1">
               <Tag size={12} />
               <span>Label Cepat</span>
             </label>
@@ -465,7 +465,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                   className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${
                     selectedTag === tag
                       ? "bg-emerald-600 text-white"
-                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-750"
                   }`}
                 >
                   #{tag}
@@ -522,15 +522,15 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
       {/* Modal Tambah Kategori Kustom */}
       {isAddCatModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-sm bg-white rounded-2xl p-5 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <h3 className="font-bold text-sm text-slate-900">
+          <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-2xl p-5 space-y-4 shadow-2xl border border-slate-100 dark:border-slate-700">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Tambah Kategori Pemasukan
               </h3>
               <button
                 type="button"
                 onClick={() => setIsAddCatModalOpen(false)}
-                className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800"
+                className="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
               >
                 <X size={15} />
               </button>
@@ -538,7 +538,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
 
             <form onSubmit={handleAddCategorySubmit} className="space-y-3">
               <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                   Nama Kategori Pemasukan
                 </label>
                 <input
@@ -547,13 +547,13 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                   placeholder="Misal: Royalti, Jual Barang Bekas..."
                   value={newCatName}
                   onChange={(e) => setNewCatName(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                   autoFocus
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
                   Pilih Warna
                 </label>
                 <div className="flex items-center gap-2">
@@ -563,7 +563,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                       type="button"
                       onClick={() => setNewCatColor(c)}
                       className={`w-7 h-7 rounded-full transition-transform ${
-                        newCatColor === c ? "scale-125 ring-2 ring-slate-900" : ""
+                        newCatColor === c ? "scale-125 ring-2 ring-slate-900 dark:ring-white" : ""
                       }`}
                       style={{ backgroundColor: c }}
                     />

@@ -820,6 +820,24 @@ export async function persistPesertaStatus(
   }
 }
 
+export async function deleteSplitBillFromDb(id: string): Promise<void> {
+  const client = getTursoClient();
+  if (!client) return;
+
+  try {
+    await client.execute({
+      sql: "DELETE FROM split_bill_participants WHERE bagi_tagihan_id = ?",
+      args: [id],
+    });
+    await client.execute({
+      sql: "DELETE FROM split_bills WHERE id = ?",
+      args: [id],
+    });
+  } catch (err) {
+    console.error("Gagal hapus split bill dari Turso:", err);
+  }
+}
+
 export async function persistWhatsAppConnection(conn: NomorWhatsAppRecord): Promise<void> {
   const client = getTursoClient();
   if (!client) return;

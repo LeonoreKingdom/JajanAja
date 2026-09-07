@@ -86,8 +86,28 @@ export default function PindaiStrukPage() {
 
     setTimeout(() => {
       setIsScanning(false);
-      const result = getMockReceiptResult(sampleTitle, selectedImage || undefined);
-      setScanResult(result);
+      if (sampleTitle) {
+        const result = getMockReceiptResult(sampleTitle, selectedImage || undefined);
+        setScanResult(result);
+      } else {
+        const cleanDraft: ReceiptScanResult = {
+          id: `scan-${Date.now()}`,
+          namaToko: "",
+          tanggal: new Date().toISOString().split("T")[0],
+          waktu: new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" }) + " WIB",
+          nomorStruk: `TRX-${Math.floor(100000 + Math.random() * 900000)}`,
+          items: [],
+          subtotal: 0,
+          pajak: 0,
+          diskon: 0,
+          total: 0,
+          kategoriSaranId: "cat-1",
+          kategoriSaranNama: "Makan & Minum",
+          confidence: 70,
+          fotoUrl: selectedImage || undefined,
+        };
+        setScanResult(cleanDraft);
+      }
     }, 1200);
   };
 
@@ -164,22 +184,22 @@ export default function PindaiStrukPage() {
       {/* Modal Notifikasi Sukses Simpan Transaksi Struk */}
       {isSuccessModalOpen && savedData && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-sm bg-white rounded-3xl p-6 text-center space-y-4 shadow-2xl animate-in zoom-in-95">
-            <div className="w-16 h-16 rounded-3xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto text-2xl shadow-xs">
+          <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-3xl p-6 text-center space-y-4 shadow-2xl border border-slate-100 dark:border-slate-700 animate-in zoom-in-95">
+            <div className="w-16 h-16 rounded-3xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center mx-auto text-2xl shadow-xs">
               <CheckCircle2 size={32} />
             </div>
 
             <div className="space-y-1.5">
-              <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 py-1 px-3 rounded-full mx-auto w-fit">
+              <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 py-1 px-3 rounded-full mx-auto w-fit">
                 <Sparkles size={13} />
                 <span>Transaksi Tersimpan Otomatis</span>
               </div>
-              <h3 className="text-base font-black text-slate-900">
+              <h3 className="text-base font-black text-slate-900 dark:text-white">
                 Struk Berhasil Dicatat!
               </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 Pengeluaran dari <strong>{savedData.namaToko}</strong> sebesar{" "}
-                <strong className="text-slate-900">
+                <strong className="text-slate-900 dark:text-white">
                   {formatRupiah(savedData.total)}
                 </strong>{" "}
                 sudah berhasil dicatat dan memotong saldo rekening serta pos budget terkait.
@@ -187,9 +207,9 @@ export default function PindaiStrukPage() {
             </div>
 
             {/* Mascot Tip */}
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-3 text-left flex items-start gap-2.5 border border-blue-100">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-2xl p-3 text-left flex items-start gap-2.5 border border-blue-100 dark:border-blue-900/40">
               <span className="text-xl">🦊</span>
-              <p className="text-[11px] text-blue-950 leading-relaxed">
+              <p className="text-[11px] text-blue-950 dark:text-blue-200 leading-relaxed">
                 <strong>Hebat!</strong> Catat struk langsung begini bikin pengeluaran
                 harian kamu tetap rapi dan transparan.
               </p>
@@ -200,7 +220,7 @@ export default function PindaiStrukPage() {
               <button
                 type="button"
                 onClick={() => router.push("/")}
-                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-lg shadow-blue-200 active:scale-95 cursor-pointer"
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-lg shadow-blue-200 dark:shadow-none active:scale-95 cursor-pointer"
               >
                 Lihat di Dashboard
               </button>
@@ -209,14 +229,14 @@ export default function PindaiStrukPage() {
                 <button
                   type="button"
                   onClick={handleResetForNextScan}
-                  className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition cursor-pointer"
+                  className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition cursor-pointer"
                 >
                   Pindai Struk Lain
                 </button>
                 <button
                   type="button"
                   onClick={() => router.push("/transaksi")}
-                  className="flex-1 py-2.5 border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-bold transition cursor-pointer"
+                  className="flex-1 py-2.5 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold transition cursor-pointer"
                 >
                   Lihat Riwayat
                 </button>

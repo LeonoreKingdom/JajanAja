@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { serverStore } from "@/server/db/store";
+import { serverStore, ensureStoreInitialized } from "@/server/db/store";
 import {
   validateCreateTransaction,
   TransactionRecord,
@@ -13,6 +13,7 @@ import { TransactionSource, TransactionType } from "@/types/finance";
  */
 export async function POST(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     let body: unknown;
     try {
       body = await request.json();
@@ -151,6 +152,7 @@ export async function POST(request: NextRequest) {
  */
 export async function GET(request: NextRequest) {
   try {
+    await ensureStoreInitialized();
     const { searchParams } = new URL(request.url);
 
     const tipe = (searchParams.get("tipe") as TransactionType | "semua") || "semua";

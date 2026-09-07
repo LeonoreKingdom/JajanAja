@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { serverStore } from "@/server/db/store";
+import { serverStore, ensureStoreInitialized } from "@/server/db/store";
 import { validateUpdateBudget } from "@/server/schemas/budget.schema";
 
 interface RouteParams {
@@ -12,6 +12,7 @@ interface RouteParams {
  */
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
+    await ensureStoreInitialized();
     const { id } = await params;
     const budget = serverStore.getBudgetById(id);
 
@@ -67,6 +68,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
  */
 export async function PATCH(request: NextRequest, { params }: RouteParams) {
   try {
+    await ensureStoreInitialized();
     const { id } = await params;
 
     const existing = serverStore.getBudgetById(id);
@@ -130,6 +132,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
  */
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
+    await ensureStoreInitialized();
     const { id } = await params;
 
     const existing = serverStore.getBudgetById(id);

@@ -40,6 +40,7 @@ import {
   deleteBudgetFromDb,
   persistReceiptScan,
   persistSplitBill,
+  deleteSplitBillFromDb,
   persistPesertaStatus,
   persistWhatsAppConnection,
   persistWhatsAppLog,
@@ -353,6 +354,12 @@ class ServerStore {
     return record;
   }
 
+  addRawTransaction(record: TransactionRecord): TransactionRecord {
+    this.transactions.unshift(record);
+    persistTransaction(record).catch(console.error);
+    return record;
+  }
+
   deleteTransaction(id: string): boolean {
     const idx = this.transactions.findIndex((t) => t.id === id);
     if (idx === -1) return false;
@@ -548,6 +555,7 @@ class ServerStore {
 
     this.bagiTagihan.splice(idx, 1);
     this.pesertaBagiTagihan = this.pesertaBagiTagihan.filter((p) => p.bagiTagihanId !== id);
+    deleteSplitBillFromDb(id).catch(console.error);
     return true;
   }
 

@@ -66,7 +66,7 @@ export default function AssetCard({ asset, onEditBalance }: AssetCardProps) {
     : "Baru saja";
 
   return (
-    <div className="bg-white rounded-3xl p-4 border border-slate-100 shadow-xs hover:shadow-md transition space-y-3.5">
+    <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-100 dark:border-slate-700/80 shadow-xs hover:shadow-md transition space-y-3.5">
       {/* Visual Digital ATM Card Representation */}
       <div
         className={`rounded-2xl p-4 text-white bg-gradient-to-r ${meta.cardGrad} shadow-md space-y-3 relative overflow-hidden`}
@@ -108,7 +108,7 @@ export default function AssetCard({ asset, onEditBalance }: AssetCardProps) {
           <button
             type="button"
             onClick={() => onEditBalance(asset)}
-            className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg text-xs flex items-center gap-1 transition active:scale-95"
+            className="px-2.5 py-1 bg-slate-100 dark:bg-slate-750 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-lg text-xs flex items-center gap-1 transition active:scale-95"
           >
             <Edit3 size={12} />
             <span>Sesuaikan</span>
@@ -116,7 +116,7 @@ export default function AssetCard({ asset, onEditBalance }: AssetCardProps) {
 
           <Link
             href={`/transaksi`}
-            className="px-2.5 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold rounded-lg text-xs flex items-center gap-1 transition active:scale-95"
+            className="px-2.5 py-1 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 font-bold rounded-lg text-xs flex items-center gap-1 transition active:scale-95"
           >
             <Plus size={12} />
             <span>Pakai</span>

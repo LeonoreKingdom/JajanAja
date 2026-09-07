@@ -119,19 +119,19 @@ export default function LevinaChatPage() {
   ];
 
   return (
-    <div className="flex-1 flex flex-col h-screen max-w-lg mx-auto w-full bg-slate-50 relative pb-20">
+    <div className="flex-1 flex flex-col h-screen max-w-lg mx-auto w-full bg-slate-50 dark:bg-slate-900 relative pb-20">
       {/* Modal Info Maskot LEVINA */}
       {showInfoModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xs bg-white rounded-3xl p-5 space-y-4 shadow-2xl text-center">
-            <div className="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center mx-auto text-3xl">
+          <div className="w-full max-w-xs bg-white dark:bg-slate-850 border dark:border-slate-700 rounded-3xl p-5 space-y-4 shadow-2xl text-center">
+            <div className="w-14 h-14 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 flex items-center justify-center mx-auto text-3xl">
               🦊
             </div>
             <div className="space-y-1.5">
-              <h3 className="font-bold text-sm text-slate-900">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Tentang LEVINA
               </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 LEVINA adalah maskot rubah pintar sekaligus asisten teman finansial pribadimu di JajanAja.
                 LEVINA siap membantumu mengontrol bocor halus, menganalisis budget, dan memberikan panduan fitur.
               </p>
@@ -139,7 +139,7 @@ export default function LevinaChatPage() {
             <button
               type="button"
               onClick={() => setShowInfoModal(false)}
-              className="w-full py-2.5 rounded-xl bg-purple-600 text-white font-bold text-xs hover:bg-purple-700 transition"
+              className="w-full py-2.5 rounded-xl bg-purple-600 text-white font-bold text-xs hover:bg-purple-700 transition cursor-pointer"
             >
               Mengerti
             </button>
@@ -150,15 +150,15 @@ export default function LevinaChatPage() {
       {/* Modal Pengaturan & Reset Riwayat Chat Lokal */}
       {showResetModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xs bg-white rounded-3xl p-5 space-y-4 shadow-2xl">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto text-xl">
+          <div className="w-full max-w-xs bg-white dark:bg-slate-850 border dark:border-slate-700 rounded-3xl p-5 space-y-4 shadow-2xl">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto text-xl">
               💾
             </div>
             <div className="space-y-1.5 text-center">
-              <h3 className="font-bold text-sm text-slate-900">
+              <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Penyimpanan Riwayat Chat
               </h3>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 Semua pesan obrolan disimpan secara otomatis di penyimpanan lokal perangkatmu (localStorage browser).
               </p>
             </div>
@@ -166,21 +166,21 @@ export default function LevinaChatPage() {
               <button
                 type="button"
                 onClick={handleResetToInitial}
-                className="w-full py-2.5 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 font-bold text-xs hover:bg-purple-100 transition"
+                className="w-full py-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 font-bold text-xs hover:bg-purple-100 dark:hover:bg-purple-900/40 transition cursor-pointer"
               >
                 Kembalikan Contoh Awal
               </button>
               <button
                 type="button"
                 onClick={handleClearAll}
-                className="w-full py-2.5 rounded-xl bg-rose-50 text-rose-600 border border-rose-200 font-bold text-xs hover:bg-rose-100 transition"
+                className="w-full py-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800 font-bold text-xs hover:bg-rose-100 dark:hover:bg-rose-900/40 transition cursor-pointer"
               >
                 Hapus Bersih Semua Pesan
               </button>
               <button
                 type="button"
                 onClick={() => setShowResetModal(false)}
-                className="w-full py-2 rounded-xl text-slate-400 font-semibold text-xs hover:text-slate-600 transition"
+                className="w-full py-2 rounded-xl text-slate-400 dark:text-slate-400 font-semibold text-xs hover:text-slate-600 dark:hover:text-slate-200 transition cursor-pointer"
               >
                 Batal
               </button>
@@ -250,7 +250,7 @@ export default function LevinaChatPage() {
               className={`flex gap-2 ${isUser ? "justify-end" : "justify-start"} animate-in fade-in`}
             >
               {!isUser && (
-                <div className="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center text-sm shrink-0 mt-1 shadow-2xs">
+                <div className="w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-950/60 flex items-center justify-center text-sm shrink-0 mt-1 shadow-2xs">
                   🦊
                 </div>
               )}
@@ -259,26 +259,26 @@ export default function LevinaChatPage() {
                 className={`max-w-[82%] rounded-2xl p-3 text-xs leading-relaxed ${
                   isUser
                     ? "bg-purple-600 text-white rounded-br-xs shadow-xs"
-                    : "bg-white text-slate-800 border border-slate-200/80 rounded-bl-xs shadow-2xs"
+                    : "bg-white dark:bg-slate-850 text-slate-800 dark:text-slate-100 border border-slate-200/80 dark:border-slate-700/80 rounded-bl-xs shadow-2xs"
                 }`}
               >
                 <p className="whitespace-pre-wrap">{msg.text}</p>
 
                 {msg.budgetData && msg.budgetData.length > 0 && (
-                  <div className="mt-2.5 pt-2 border-t border-slate-100 space-y-2">
+                  <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-700 space-y-2">
                     {msg.budgetData.map((b, idx) => (
-                      <div key={idx} className="bg-slate-50 rounded-xl p-2 space-y-1 text-[11px]">
-                        <div className="flex items-center justify-between font-bold text-slate-800">
+                      <div key={idx} className="bg-slate-50 dark:bg-slate-800 rounded-xl p-2 space-y-1 text-[11px]">
+                        <div className="flex items-center justify-between font-bold text-slate-800 dark:text-slate-200">
                           <span>{b.kategori}</span>
                           <span
                             className={
-                              b.status === "waspada" ? "text-amber-600 font-extrabold" : "text-emerald-600 font-extrabold"
+                              b.status === "waspada" ? "text-amber-600 dark:text-amber-400 font-extrabold" : "text-emerald-600 dark:text-emerald-400 font-extrabold"
                             }
                           >
                             Sisa Rp {new Intl.NumberFormat("id-ID").format(b.sisa)}
                           </span>
                         </div>
-                        <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                        <div className="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
                           <div
                             className={`h-full rounded-full ${
                               b.persentase > 80
@@ -294,7 +294,7 @@ export default function LevinaChatPage() {
                     ))}
                     <Link
                       href="/budgetin"
-                      className="inline-flex items-center gap-1 text-[10px] font-bold text-purple-600 hover:text-purple-800 pt-0.5"
+                      className="inline-flex items-center gap-1 text-[10px] font-bold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 pt-0.5"
                     >
                       <span>Kelola di Menu Budgetin</span>
                       <span>→</span>
@@ -303,10 +303,10 @@ export default function LevinaChatPage() {
                 )}
 
                 {msg.savingTips && msg.savingTips.length > 0 && (
-                  <div className="mt-2.5 pt-2 border-t border-slate-100 space-y-2">
-                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-800 bg-purple-50 p-2 rounded-xl border border-purple-100">
+                  <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-700 space-y-2">
+                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-800 dark:text-slate-200 bg-purple-50 dark:bg-purple-950/40 p-2 rounded-xl border border-purple-100 dark:border-purple-800/60">
                       <span>Total Potensi Hemat:</span>
-                      <span className="text-emerald-700 font-black">
+                      <span className="text-emerald-700 dark:text-emerald-400 font-black">
                         +{new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(
                           msg.savingTips.reduce((sum, t) => sum + t.potensiHemat, 0)
                         )}/bln
@@ -316,18 +316,18 @@ export default function LevinaChatPage() {
                     {msg.savingTips.map((tip) => (
                       <div
                         key={tip.id}
-                        className="bg-slate-50 rounded-xl p-2.5 space-y-1 text-[11px] border border-slate-100"
+                        className="bg-slate-50 dark:bg-slate-800/80 rounded-xl p-2.5 space-y-1 text-[11px] border border-slate-100 dark:border-slate-700/60"
                       >
-                        <div className="flex items-center justify-between font-bold text-slate-900">
+                        <div className="flex items-center justify-between font-bold text-slate-900 dark:text-white">
                           <span className="flex items-center gap-1.5">
                             <span>{tip.ikon || "💡"}</span>
                             <span>{tip.judul}</span>
                           </span>
-                          <span className="text-emerald-600 font-extrabold">
+                          <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">
                             +{new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(tip.potensiHemat)}
                           </span>
                         </div>
-                        <p className="text-[10px] text-slate-500 leading-relaxed">
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">
                           {tip.deskripsi}
                         </p>
                       </div>
@@ -336,7 +336,7 @@ export default function LevinaChatPage() {
                     <div className="flex items-center gap-2 pt-1">
                       <Link
                         href="/budgetin"
-                        className="inline-flex items-center gap-1 text-[10px] font-bold text-purple-600 hover:text-purple-800"
+                        className="inline-flex items-center gap-1 text-[10px] font-bold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300"
                       >
                         <span>Sesuaikan Target di Budgetin</span>
                         <span>→</span>
@@ -346,23 +346,23 @@ export default function LevinaChatPage() {
                 )}
 
                 {msg.featureGuide && (
-                  <div className="mt-2.5 pt-2 border-t border-slate-100 space-y-2.5">
-                    <div className="bg-purple-50/80 rounded-xl p-3 border border-purple-100 space-y-2.5">
-                      <div className="flex items-center gap-2 font-bold text-slate-900 text-xs">
+                  <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-700 space-y-2.5">
+                    <div className="bg-purple-50/80 dark:bg-purple-950/30 rounded-xl p-3 border border-purple-100 dark:border-purple-800/60 space-y-2.5">
+                      <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-white text-xs">
                         <span className="text-base">{msg.featureGuide.icon || "🧭"}</span>
                         <span>{msg.featureGuide.featureName}</span>
                       </div>
-                      <p className="text-[11px] text-slate-600 leading-relaxed">
+                      <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
                         {msg.featureGuide.description}
                       </p>
 
                       <div className="space-y-1.5 pt-0.5">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700 block">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700 dark:text-purple-300 block">
                           Langkah Penggunaan:
                         </span>
                         <div className="space-y-1.5">
                           {msg.featureGuide.steps.map((step, sIdx) => (
-                            <div key={sIdx} className="flex items-start gap-2 text-[11px] text-slate-700">
+                            <div key={sIdx} className="flex items-start gap-2 text-[11px] text-slate-700 dark:text-slate-300">
                               <span className="w-4 h-4 rounded-full bg-purple-600 text-white flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5 shadow-2xs">
                                 {sIdx + 1}
                               </span>
@@ -387,7 +387,7 @@ export default function LevinaChatPage() {
 
                 <span
                   className={`block text-[9px] mt-1.5 ${
-                    isUser ? "text-purple-200 text-right" : "text-slate-400 text-left"
+                    isUser ? "text-purple-200 text-right" : "text-slate-400 dark:text-slate-400 text-left"
                   }`}
                 >
                   {msg.timestamp}
@@ -399,10 +399,10 @@ export default function LevinaChatPage() {
 
         {isTyping && (
           <div className="flex gap-2 justify-start animate-in fade-in">
-            <div className="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center text-sm shrink-0 mt-1">
+            <div className="w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-950/60 flex items-center justify-center text-sm shrink-0 mt-1">
               🦊
             </div>
-            <div className="bg-white text-slate-500 border border-slate-200 rounded-2xl rounded-bl-xs px-3 py-2 text-xs flex items-center gap-1.5 shadow-2xs">
+            <div className="bg-white dark:bg-slate-850 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded-2xl rounded-bl-xs px-3 py-2 text-xs flex items-center gap-1.5 shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" />
               <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-bounce [animation-delay:0.2s]" />
               <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-bounce [animation-delay:0.4s]" />
@@ -415,13 +415,13 @@ export default function LevinaChatPage() {
       </div>
 
       {/* Floating Prompt Suggestions */}
-      <div className="px-3 py-1.5 bg-white/90 backdrop-blur-xs border-t border-slate-200/70 overflow-x-auto flex items-center gap-1.5 shrink-0 text-xs">
+      <div className="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xs border-t border-slate-200/70 dark:border-slate-800 overflow-x-auto flex items-center gap-1.5 shrink-0 text-xs">
         {promptSuggestions.map((sug, idx) => (
           <button
             key={idx}
             type="button"
             onClick={() => handleSendPrompt(sug.text)}
-            className="px-2.5 py-1 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold rounded-xl whitespace-nowrap transition active:scale-95 text-[11px] shrink-0 border border-purple-200/60"
+            className="px-2.5 py-1 bg-purple-50 dark:bg-purple-950/40 hover:bg-purple-100 dark:hover:bg-purple-900/60 text-purple-700 dark:text-purple-300 font-bold rounded-xl whitespace-nowrap transition active:scale-95 text-[11px] shrink-0 border border-purple-200/60 dark:border-purple-800/60 cursor-pointer"
           >
             {sug.label}
           </button>
@@ -429,19 +429,19 @@ export default function LevinaChatPage() {
       </div>
 
       {/* Chat Input Bar */}
-      <div className="p-3 bg-white border-t border-slate-200 shrink-0">
+      <div className="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shrink-0">
         <form onSubmit={handleSubmit} className="flex items-center gap-2">
           <input
             type="text"
             placeholder="Tanya LEVINA tentang budget, tips hemat, atau panduan..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            className="flex-1 px-3.5 py-2.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="flex-1 px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
           <button
             type="submit"
             disabled={!inputValue.trim()}
-            className="w-10 h-10 rounded-2xl bg-purple-600 hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white flex items-center justify-center transition active:scale-95 shrink-0 shadow-md shadow-purple-200 cursor-pointer"
+            className="w-10 h-10 rounded-2xl bg-purple-600 hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed text-white flex items-center justify-center transition active:scale-95 shrink-0 shadow-md shadow-purple-200 dark:shadow-none cursor-pointer"
           >
             <Send size={15} />
           </button>
