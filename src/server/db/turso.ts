@@ -57,9 +57,11 @@ export async function initTursoTables(): Promise<void> {
     `CREATE TABLE IF NOT EXISTS users (
       id TEXT PRIMARY KEY,
       nama TEXT NOT NULL,
-      email TEXT NOT NULL,
+      email TEXT NOT NULL UNIQUE,
+      password TEXT,
       nomor_whatsapp TEXT,
-      avatar_url TEXT
+      avatar_url TEXT,
+      role TEXT DEFAULT 'Pro'
     );`,
     `CREATE TABLE IF NOT EXISTS categories (
       id TEXT PRIMARY KEY,
@@ -201,6 +203,14 @@ export async function initTursoTables(): Promise<void> {
   for (const sql of statements) {
     await client.execute(sql);
   }
+
+  // Safe migrations for existing users table
+  try {
+    await client.execute("ALTER TABLE users ADD COLUMN password TEXT;");
+  } catch {}
+  try {
+    await client.execute("ALTER TABLE users ADD COLUMN role TEXT DEFAULT 'Pro';");
+  } catch {}
 }
 
 /**
@@ -227,9 +237,22 @@ export async function seedTursoDefaults(): Promise<void> {
   const userCount = Number(userCheck.rows[0].count);
   if (userCount === 0) {
     await client.execute({
-      sql: "INSERT OR REPLACE INTO users (id, nama, email, nomor_whatsapp, avatar_url) VALUES (?, ?, ?, ?, ?)",
-      args: [mockUser.id, mockUser.nama, mockUser.email, mockUser.nomorWhatsApp || null, mockUser.avatarUrl || ""],
+      sql: "INSERT OR REPLACE INTO users (id, nama, email, password, nomor_whatsapp, avatar_url, role) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      args: [
+        mockUser.id,
+        mockUser.nama,
+        mockUser.email,
+        mockUser.password || "password123",
+        mockUser.nomorWhatsApp || null,
+        mockUser.avatarUrl || "",
+        "Pro",
+      ],
     });
+  } else {
+    // Ensure existing user has default password set if null
+    try {
+      await client.execute("UPDATE users SET password = 'password123' WHERE password IS NULL OR password = ''");
+    } catch {}
   }
 
   // 3. Check assets
@@ -383,8 +406,10 @@ export async function loadDataFromTurso(): Promise<{
         id: String(r.id),
         nama: String(r.nama),
         email: String(r.email),
+        password: r.password ? String(r.password) : undefined,
         nomorWhatsApp: String(r.nomor_whatsapp || ""),
         avatarUrl: r.avatar_url ? String(r.avatar_url) : undefined,
+        role: r.role ? String(r.role) : "Pro",
       };
     }
 
@@ -932,4 +957,81 @@ export async function clearLevinaMessagesFromDb(userId: string): Promise<void> {
   } catch (err) {
     console.error("Gagal clear pesan Levina di Turso:", err);
   }
+}
+
+export async function findUserByEmail(email: string): Promise<User | null> {
+  const client = getTursoClient();
+  if (!client) return null;
+
+  try {
+    const res = await client.execute({
+      sql: "SELECT id, nama, email, password, nomor_whatsapp, avatar_url, role FROM users WHERE LOWER(email) = LOWER(?) LIMIT 1",
+      args: [email.trim()],
+    });
+
+    if (res.rows.length === 0) return null;
+    const r = res.rows[0];
+    return {
+      id: String(r.id),
+      nama: String(r.nama),
+      email: String(r.email),
+      password: r.password ? String(r.password) : undefined,
+      nomorWhatsApp: r.nomor_whatsapp ? String(r.nomor_whatsapp) : undefined,
+      avatarUrl: r.avatar_url ? String(r.avatar_url) : undefined,
+      role: r.role ? String(r.role) : "Pro",
+    };
+  } catch (err) {
+    console.error("Gagal cari user by email di Turso:", err);
+    return null;
+  }
+}
+
+export async function findUserById(id: string): Promise<User | null> {
+  const client = getTursoClient();
+  if (!client) return null;
+
+  try {
+    const res = await client.execute({
+      sql: "SELECT id, nama, email, password, nomor_whatsapp, avatar_url, role FROM users WHERE id = ? LIMIT 1",
+      args: [id],
+    });
+
+    if (res.rows.length === 0) return null;
+    const r = res.rows[0];
+    return {
+      id: String(r.id),
+      nama: String(r.nama),
+      email: String(r.email),
+      password: r.password ? String(r.password) : undefined,
+      nomorWhatsApp: r.nomor_whatsapp ? String(r.nomor_whatsapp) : undefined,
+      avatarUrl: r.avatar_url ? String(r.avatar_url) : undefined,
+      role: r.role ? String(r.role) : "Pro",
+    };
+  } catch (err) {
+    console.error("Gagal cari user by ID di Turso:", err);
+    return null;
+  }
+}
+
+export async function createUserInDb(user: User): Promise<User> {
+  const client = getTursoClient();
+  if (client) {
+    try {
+      await client.execute({
+        sql: "INSERT INTO users (id, nama, email, password, nomor_whatsapp, avatar_url, role) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        args: [
+          user.id,
+          user.nama,
+          user.email,
+          user.password || "password123",
+          user.nomorWhatsApp || null,
+          user.avatarUrl || "",
+          user.role || "Pro",
+        ],
+      });
+    } catch (err) {
+      console.error("Gagal insert user baru ke Turso:", err);
+    }
+  }
+  return user;
 }

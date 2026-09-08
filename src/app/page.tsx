@@ -16,6 +16,7 @@ import TransactionModal from "@/components/dashboard/TransactionModal";
 import LevinaChatModal from "@/components/dashboard/LevinaChatModal";
 import { LevinaInsight, TransactionType, User } from "@/types/finance";
 import { useTransaction } from "@/context/TransactionContext";
+import { useAuth } from "@/context/AuthContext";
 import { formatRupiah } from "@/lib/utils";
 
 const defaultUser: User = {
@@ -27,6 +28,9 @@ const defaultUser: User = {
 };
 
 export default function DashboardPage() {
+  const { user } = useAuth();
+  const activeUser = user || defaultUser;
+
   const {
     transactions,
     assets,
@@ -127,7 +131,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex-1 flex flex-col p-4 space-y-4">
+    <div className="flex-1 flex flex-col p-4 lg:p-0 space-y-5">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg border border-slate-700 animate-in fade-in slide-in-from-top-2">
@@ -135,10 +139,12 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Header Profile */}
-      <Header user={defaultUser} />
+      {/* Header Profile - Mobile Only */}
+      <div className="lg:hidden">
+        <Header user={activeUser} />
+      </div>
 
-      {/* Ringkasan Saldo, Pengeluaran & Pemasukan */}
+      {/* Ringkasan Saldo, Pengeluaran & Pemasukan (4-col on desktop, stacked on mobile) */}
       <SummaryCards
         totalSaldo={totalSaldo}
         totalPemasukan={totalPemasukanBulanIni}
@@ -147,51 +153,82 @@ export default function DashboardPage() {
         totalBudget={totalBudgetBulanIni}
       />
 
-      {/* Aksi Cepat (JajanAja, NabungAja, Scan Struk, Split Bill) */}
-      <QuickActions
-        onAddExpense={handleOpenExpenseModal}
-        onAddIncome={handleOpenIncomeModal}
-        onScanReceipt={handleScanReceipt}
-        onSplitBill={handleSplitBill}
-      />
+      {/* ===== DESKTOP MULTI-COLUMN LAYOUT (>= xl) ===== */}
+      <div className="hidden xl:grid xl:grid-cols-12 gap-6 items-start">
+        {/* Main 8-Columns (Aksi Cepat, Grafik Keuangan, Transaksi Terbaru) */}
+        <div className="xl:col-span-8 space-y-6">
+          <QuickActions
+            onAddExpense={handleOpenExpenseModal}
+            onAddIncome={handleOpenIncomeModal}
+            onScanReceipt={handleScanReceipt}
+            onSplitBill={handleSplitBill}
+          />
+          <MonthlyFinancialChart />
+          <RecentTransactions
+            transactions={transactions}
+            onAddTransaction={handleOpenExpenseModal}
+            onViewAll={() => router.push("/transaksi")}
+          />
+        </div>
 
-      {/* Ringkasan Kondisi Uang & Evaluasi Finansial */}
-      <FinancialConditionSummary
-        totalPemasukan={totalPemasukanBulanIni}
-        totalPengeluaran={totalPengeluaranBulanIni}
-        sisaBudget={sisaBudgetBulanIni}
-        totalBudget={totalBudgetBulanIni}
-      />
+        {/* Side 4-Columns (LEVINA Insight, Evaluasi Finansial, Budgetin, Asetku) */}
+        <div className="xl:col-span-4 space-y-6">
+          <LevinaInsightCard
+            insight={currentInsight}
+            onOpenChat={() => setIsLevinaModalOpen(true)}
+          />
+          <FinancialConditionSummary
+            totalPemasukan={totalPemasukanBulanIni}
+            totalPengeluaran={totalPengeluaranBulanIni}
+            sisaBudget={sisaBudgetBulanIni}
+            totalBudget={totalBudgetBulanIni}
+          />
+          <BudgetOverview
+            budgets={budgets}
+            onManageBudget={() => router.push("/budgetin")}
+          />
+          <AssetSummary
+            assets={assets}
+            onManageAssets={() => router.push("/asetku")}
+          />
+        </div>
+      </div>
 
-      {/* Grafik Data Bulanan Pemasukan & Pengeluaran */}
-      <MonthlyFinancialChart />
+      {/* ===== MOBILE / TABLET STACK (< xl) ===== */}
+      <div className="xl:hidden space-y-4">
+        <QuickActions
+          onAddExpense={handleOpenExpenseModal}
+          onAddIncome={handleOpenIncomeModal}
+          onScanReceipt={handleScanReceipt}
+          onSplitBill={handleSplitBill}
+        />
+        <FinancialConditionSummary
+          totalPemasukan={totalPemasukanBulanIni}
+          totalPengeluaran={totalPengeluaranBulanIni}
+          sisaBudget={sisaBudgetBulanIni}
+          totalBudget={totalBudgetBulanIni}
+        />
+        <MonthlyFinancialChart />
+        <LevinaInsightCard
+          insight={currentInsight}
+          onOpenChat={() => setIsLevinaModalOpen(true)}
+        />
+        <BudgetOverview
+          budgets={budgets}
+          onManageBudget={() => router.push("/budgetin")}
+        />
+        <AssetSummary
+          assets={assets}
+          onManageAssets={() => router.push("/asetku")}
+        />
+        <RecentTransactions
+          transactions={transactions}
+          onAddTransaction={handleOpenExpenseModal}
+          onViewAll={() => router.push("/transaksi")}
+        />
+      </div>
 
-      {/* Widget Interaktif LEVINA */}
-      <LevinaInsightCard
-        insight={currentInsight}
-        onOpenChat={() => setIsLevinaModalOpen(true)}
-      />
-
-      {/* Alokasi Budgetin */}
-      <BudgetOverview
-        budgets={budgets}
-        onManageBudget={() => router.push("/budgetin")}
-      />
-
-      {/* Ringkasan Asetku */}
-      <AssetSummary
-        assets={assets}
-        onManageAssets={() => router.push("/asetku")}
-      />
-
-      {/* Transaksi Terbaru */}
-      <RecentTransactions
-        transactions={transactions}
-        onAddTransaction={handleOpenExpenseModal}
-        onViewAll={() => router.push("/transaksi")}
-      />
-
-      {/* Bottom Navigation */}
+      {/* Bottom Navigation (Hidden on lg+) */}
       <BottomNav />
 
       {/* Modal Input Transaksi (JajanAja / NabungAja) */}

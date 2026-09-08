@@ -199,7 +199,7 @@ export default function KoneksiWhatsAppPage() {
   const whatsappTransactions = transactions.filter((t) => t.sumber === "whatsapp");
 
   return (
-    <div className="flex-1 flex flex-col p-4 pb-28 space-y-4 max-w-lg mx-auto w-full">
+    <div className="flex-1 flex flex-col p-4 lg:p-0 pb-28 space-y-5 max-w-lg lg:max-w-4xl mx-auto w-full">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg border border-slate-700 animate-in fade-in slide-in-from-top-2">
@@ -207,8 +207,8 @@ export default function KoneksiWhatsAppPage() {
         </div>
       )}
 
-      {/* Header Halaman */}
-      <div className="flex items-center justify-between pt-1">
+      {/* Header Halaman - Mobile Only */}
+      <div className="flex lg:hidden items-center justify-between pt-1">
         <div className="flex items-center gap-2.5">
           <button
             type="button"

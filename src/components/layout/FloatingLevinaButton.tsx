@@ -17,7 +17,7 @@ export default function FloatingLevinaButton() {
   return (
     <aside
       aria-label="Asisten Keuangan LEVINA"
-      className="fixed bottom-20 right-4 z-40 flex flex-col items-end pointer-events-auto select-none animate-in fade-in slide-in-from-bottom-3 duration-300"
+      className="fixed bottom-20 right-4 z-40 lg:hidden flex flex-col items-end pointer-events-auto select-none animate-in fade-in slide-in-from-bottom-3 duration-300"
     >
       {/* Tooltip Mini / Sapaan Bubble */}
       {showTooltip && (

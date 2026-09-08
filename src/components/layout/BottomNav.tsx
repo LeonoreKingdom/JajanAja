@@ -29,7 +29,7 @@ export default function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 px-2 py-2 max-w-lg mx-auto shadow-lg transition-colors duration-200">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 px-2 py-2 max-w-lg mx-auto shadow-lg transition-colors duration-200">
       <div className="flex items-center justify-around">
         {navItems.map((item) => {
           const Icon = item.icon;

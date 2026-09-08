@@ -133,7 +133,7 @@ export default function BagiTagihanPage() {
   }, 0);
 
   return (
-    <div className="flex-1 flex flex-col p-4 pb-28 space-y-4 max-w-lg mx-auto w-full">
+    <div className="flex-1 flex flex-col p-4 lg:p-0 pb-28 space-y-5 w-full">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg border border-slate-700 animate-in fade-in slide-in-from-top-2">
@@ -141,8 +141,8 @@ export default function BagiTagihanPage() {
         </div>
       )}
 
-      {/* Header Halaman */}
-      <div className="flex items-center justify-between pt-1">
+      {/* Header Halaman - Mobile Only */}
+      <div className="flex lg:hidden items-center justify-between pt-1">
         <div className="flex items-center gap-2.5">
           <button
             type="button"
@@ -168,6 +168,21 @@ export default function BagiTagihanPage() {
         >
           <Plus size={14} />
           <span>Bagi Baru</span>
+        </Link>
+      </div>
+
+      {/* Desktop Action Banner */}
+      <div className="hidden lg:flex items-center justify-between bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
+        <div>
+          <h2 className="text-sm font-bold text-slate-900 dark:text-white">Bagi Tagihan & Split Bill</h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400">Hitung patungan adil dengan pajak & diskon, lalu bagikan ke WhatsApp</p>
+        </div>
+        <Link
+          href="/bagi-tagihan/baru"
+          className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-xs transition"
+        >
+          <Plus size={15} />
+          <span>Bagi Tagihan Baru</span>
         </Link>
       </div>
 
@@ -255,7 +270,7 @@ export default function BagiTagihanPage() {
           </div>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {filteredBills.map((bill) => {
             const totalPaidPeserta = bill.peserta.filter((p) => p.sudahBayar).length;
             const totalPeserta = bill.peserta.length;

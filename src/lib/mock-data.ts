@@ -10,8 +10,10 @@ export const mockUser: User = {
   id: "user-1",
   nama: "Rian Aditya",
   email: "rian.aditya@example.com",
+  password: "password123",
   nomorWhatsApp: "081234567890",
   avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+  role: "Pro",
 };
 
 export const mockCategories: Category[] = [

@@ -46,6 +46,9 @@ import {
   persistWhatsAppLog,
   persistLevinaMessage,
   clearLevinaMessagesFromDb,
+  findUserByEmail,
+  findUserById,
+  createUserInDb,
 } from "./turso";
 
 /**
@@ -153,6 +156,45 @@ class ServerStore {
 
   getUser(): User {
     return { ...this.user };
+  }
+
+  setCurrentUser(user: User): void {
+    this.user = { ...user };
+  }
+
+  async findUserByEmail(email: string): Promise<User | null> {
+    const dbUser = await findUserByEmail(email);
+    if (dbUser) return dbUser;
+
+    if (this.user.email.toLowerCase() === email.trim().toLowerCase()) {
+      return { ...this.user };
+    }
+    return null;
+  }
+
+  async findUserById(id: string): Promise<User | null> {
+    const dbUser = await findUserById(id);
+    if (dbUser) return dbUser;
+
+    if (this.user.id === id) {
+      return { ...this.user };
+    }
+    return null;
+  }
+
+  async registerUser(data: { nama: string; email: string; password?: string }): Promise<User> {
+    const newUser: User = {
+      id: `usr-${Date.now()}`,
+      nama: data.nama,
+      email: data.email.toLowerCase(),
+      password: data.password || "password123",
+      avatarUrl: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(data.nama)}`,
+      role: "Pro",
+    };
+
+    await createUserInDb(newUser);
+    this.user = { ...newUser };
+    return { ...newUser };
   }
 
   getAssets(jenis?: string): Asset[] {

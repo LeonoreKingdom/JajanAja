@@ -6,8 +6,10 @@ export interface User {
   id: string;
   nama: string;
   email: string;
+  password?: string;
   nomorWhatsApp?: string;
   avatarUrl?: string;
+  role?: string;
 }
 
 export interface Asset {

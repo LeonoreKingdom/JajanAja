@@ -21,7 +21,7 @@ import { useTransaction } from "@/context/TransactionContext";
 import { Asset, AssetType } from "@/types/finance";
 
 export default function AsetkuPage() {
-  const { assets, addAsset, updateAssetBalance, refreshData } = useTransaction();
+  const { assets, addAsset, updateAssetBalance } = useTransaction();
 
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [editingAsset, setEditingAsset] = useState<Asset | null>(null);
@@ -83,7 +83,7 @@ export default function AsetkuPage() {
   });
 
   return (
-    <div className="flex-1 flex flex-col p-4 pb-24 space-y-4 max-w-lg mx-auto w-full">
+    <div className="flex-1 flex flex-col p-4 lg:p-0 space-y-5 w-full">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 dark:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg border border-slate-700 animate-in fade-in slide-in-from-top-2">
@@ -91,8 +91,8 @@ export default function AsetkuPage() {
         </div>
       )}
 
-      {/* Header */}
-      <header className="flex items-center justify-between py-2">
+      {/* Header - Mobile Only */}
+      <header className="flex lg:hidden items-center justify-between py-2">
         <Link
           href="/"
           className="w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-2xs"
@@ -120,51 +120,69 @@ export default function AsetkuPage() {
         </div>
       </header>
 
+      {/* Desktop action banner */}
+      <div className="hidden lg:flex items-center justify-between bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
+        <div>
+          <h2 className="text-sm font-bold text-slate-900 dark:text-white">Manajemen Akun & Dompet (Asetku)</h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400">Kelola saldo kas tunai, rekening bank, dan dompet digital</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setIsCreateModalOpen(true)}
+          className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-xs transition cursor-pointer"
+        >
+          <Plus size={15} />
+          <span>Tambah Akun Aset</span>
+        </button>
+      </div>
+
       {/* Ringkasan Total Aset Likuid */}
       <TotalAssetOverview assets={assets} />
 
       {/* Search & Filter Bar */}
-      <div className="space-y-2">
-        <div className="relative">
-          <Search
-            size={16}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"
-          />
-          <input
-            type="text"
-            placeholder="Cari rekening atau e-wallet..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
-          />
-        </div>
+      <div className="space-y-2 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
+        <div className="flex flex-col sm:flex-row gap-2.5 items-stretch sm:items-center justify-between">
+          <div className="relative flex-1">
+            <Search
+              size={16}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+            />
+            <input
+              type="text"
+              placeholder="Cari rekening atau e-wallet..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-        {/* Filter Type Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
-          {[
-            { id: "semua", label: "Semua Aset", icon: <Wallet size={12} /> },
-            { id: "bank", label: "Rekening Bank", icon: <Building2 size={12} /> },
-            { id: "e-wallet", label: "Dompet Digital", icon: <Smartphone size={12} /> },
-            { id: "tunai", label: "Uang Fisik", icon: <Coins size={12} /> },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setFilterType(tab.id as typeof filterType)}
-              className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 whitespace-nowrap transition text-xs cursor-pointer ${
-                filterType === tab.id
-                  ? "bg-slate-900 dark:bg-blue-600 text-white shadow-xs"
-                  : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700"
-              }`}
-            >
-              {tab.icon}
-              <span>{tab.label}</span>
-            </button>
-          ))}
+          {/* Filter Type Pills */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 no-scrollbar text-xs">
+            {[
+              { id: "semua", label: "Semua Aset", icon: <Wallet size={12} /> },
+              { id: "bank", label: "Rekening Bank", icon: <Building2 size={12} /> },
+              { id: "e-wallet", label: "Dompet Digital", icon: <Smartphone size={12} /> },
+              { id: "tunai", label: "Uang Fisik", icon: <Coins size={12} /> },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setFilterType(tab.id as typeof filterType)}
+                className={`px-3 py-2 rounded-xl font-bold flex items-center gap-1.5 whitespace-nowrap transition text-xs cursor-pointer ${
+                  filterType === tab.id
+                    ? "bg-slate-900 dark:bg-blue-600 text-white shadow-xs"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700"
+                }`}
+              >
+                {tab.icon}
+                <span>{tab.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Daftar Kartu Aset */}
+      {/* Daftar Kartu Aset (Grid on desktop: 1 col on mobile, 2 cols on md, 3 cols on xl) */}
       <div className="space-y-3">
         <div className="flex items-center justify-between px-1">
           <h2 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
@@ -186,13 +204,15 @@ export default function AsetkuPage() {
             </p>
           </div>
         ) : (
-          filteredAssets.map((asset) => (
-            <AssetCard
-              key={asset.id}
-              asset={asset}
-              onEditBalance={handleEditBalance}
-            />
-          ))
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {filteredAssets.map((asset) => (
+              <AssetCard
+                key={asset.id}
+                asset={asset}
+                onEditBalance={handleEditBalance}
+              />
+            ))}
+          </div>
         )}
       </div>
 
@@ -228,7 +248,7 @@ export default function AsetkuPage() {
         onSave={handleSaveBalance}
       />
 
-      {/* Bottom Nav */}
+      {/* Bottom Nav (Mobile Only) */}
       <BottomNav activeTab="asetku" />
     </div>
   );

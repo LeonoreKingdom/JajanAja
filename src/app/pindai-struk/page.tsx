@@ -180,7 +180,7 @@ export default function PindaiStrukPage() {
   };
 
   return (
-    <div className="flex-1 flex flex-col p-4 pb-24 space-y-4 max-w-lg mx-auto w-full">
+    <div className="flex-1 flex flex-col p-4 lg:p-0 pb-24 space-y-5 max-w-lg lg:max-w-4xl mx-auto w-full">
       {/* Modal Notifikasi Sukses Simpan Transaksi Struk */}
       {isSuccessModalOpen && savedData && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
@@ -255,8 +255,8 @@ export default function PindaiStrukPage() {
         />
       ) : (
         <>
-          {/* Header Navigasi */}
-          <header className="flex items-center justify-between py-2">
+          {/* Header Navigasi - Mobile Only */}
+          <header className="flex lg:hidden items-center justify-between py-2">
             <button
               type="button"
               onClick={handleHeaderBack}

@@ -119,7 +119,7 @@ export default function LevinaChatPage() {
   ];
 
   return (
-    <div className="flex-1 flex flex-col h-screen max-w-lg mx-auto w-full bg-slate-50 dark:bg-slate-900 relative pb-20">
+    <div className="flex-1 flex flex-col h-screen lg:h-[85vh] max-w-lg lg:max-w-4xl mx-auto w-full bg-slate-50 dark:bg-slate-900 lg:rounded-3xl lg:border lg:border-slate-200/80 lg:dark:border-slate-800 lg:shadow-lg relative pb-20 lg:pb-4 overflow-hidden">
       {/* Modal Info Maskot LEVINA */}
       {showInfoModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
