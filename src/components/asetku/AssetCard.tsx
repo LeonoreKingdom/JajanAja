@@ -48,7 +48,7 @@ export default function AssetCard({ asset, onEditBalance }: AssetCardProps) {
           label: "Aset Lainnya",
           icon: <Wallet size={13} />,
           badgeClass: "bg-slate-50 text-slate-700 border-slate-200",
-          cardGrad: "from-slate-700 to-slate-850",
+          cardGrad: "from-slate-700 to-slate-900",
         };
     }
   };
@@ -66,7 +66,7 @@ export default function AssetCard({ asset, onEditBalance }: AssetCardProps) {
     : "Baru saja";
 
   return (
-    <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-100 dark:border-slate-700/80 shadow-xs hover:shadow-md transition space-y-3.5">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-100 dark:border-slate-800 shadow-xs hover:shadow-md transition space-y-3.5">
       {/* Visual Digital ATM Card Representation */}
       <div
         className={`rounded-2xl p-4 text-white bg-gradient-to-r ${meta.cardGrad} shadow-md space-y-3 relative overflow-hidden`}
@@ -108,7 +108,7 @@ export default function AssetCard({ asset, onEditBalance }: AssetCardProps) {
           <button
             type="button"
             onClick={() => onEditBalance(asset)}
-            className="px-2.5 py-1 bg-slate-100 dark:bg-slate-750 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-lg text-xs flex items-center gap-1 transition active:scale-95"
+            className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-lg text-xs flex items-center gap-1 transition active:scale-95"
           >
             <Edit3 size={12} />
             <span>Sesuaikan</span>

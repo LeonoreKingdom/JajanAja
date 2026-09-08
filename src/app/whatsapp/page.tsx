@@ -291,7 +291,7 @@ export default function KoneksiWhatsAppPage() {
       </div>
 
       {/* Simulator Interaktif Chat WhatsApp */}
-      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3">
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
@@ -378,7 +378,7 @@ export default function KoneksiWhatsAppPage() {
       </div>
 
       {/* Panduan Format Pesan (Cheat Sheet) */}
-      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3">
         <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
           <Zap size={16} className="text-amber-500" />
           <h3 className="font-bold text-xs text-slate-800 dark:text-white uppercase tracking-wider">
@@ -428,7 +428,7 @@ export default function KoneksiWhatsAppPage() {
 
       {/* Riwayat Transaksi Tercatat dari WhatsApp */}
       {whatsappTransactions.length > 0 && (
-        <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
             <h3 className="font-bold text-xs text-slate-800 dark:text-white uppercase tracking-wider">
               Tercatat via WhatsApp ({whatsappTransactions.length})

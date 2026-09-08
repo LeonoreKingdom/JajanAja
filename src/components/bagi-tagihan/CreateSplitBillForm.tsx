@@ -213,7 +213,7 @@ export default function CreateSplitBillForm({
       )}
 
       {/* Informasi Umum Tagihan */}
-      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3.5">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3.5">
         <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2">
           <Receipt size={16} className="text-blue-600 dark:text-blue-400" />
           <h3 className="font-bold text-xs text-slate-800 dark:text-slate-200 uppercase tracking-wider">
@@ -301,7 +301,7 @@ export default function CreateSplitBillForm({
       </div>
 
       {/* Pilihan Metode Pembagian */}
-      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3">
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
           <div className="flex items-center gap-2">
             <Calculator size={16} className="text-blue-600 dark:text-blue-400" />
@@ -364,7 +364,7 @@ export default function CreateSplitBillForm({
       </div>
 
       {/* Daftar Teman / Peserta & Alokasi Bagian */}
-      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3.5">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3.5">
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
           <div className="flex items-center gap-2">
             <Users size={16} className="text-blue-600 dark:text-blue-400" />
@@ -509,7 +509,7 @@ export default function CreateSplitBillForm({
       </div>
 
       {/* Catatan Tambahan (Opsional) */}
-      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1.5">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-1.5">
         <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
           Catatan Tambahan (Opsional)
         </label>

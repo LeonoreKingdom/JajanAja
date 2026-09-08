@@ -89,7 +89,7 @@ export default function LevinaChatModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-xs animate-in fade-in">
-      <div className="w-full max-w-lg bg-white dark:bg-slate-850 rounded-t-3xl sm:rounded-2xl shadow-2xl h-[85vh] sm:h-[600px] flex flex-col overflow-hidden border dark:border-slate-700">
+      <div className="w-full max-w-lg bg-white dark:bg-slate-900 rounded-t-3xl sm:rounded-2xl shadow-2xl h-[85vh] sm:h-[600px] flex flex-col overflow-hidden border border-slate-100 dark:border-slate-800">
         {/* Header Chat */}
         <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-700 via-indigo-700 to-purple-800 text-white">
           <div className="flex items-center gap-3">
@@ -156,7 +156,7 @@ export default function LevinaChatModal({
         {/* Input Form */}
         <form
           onSubmit={handleSend}
-          className="p-3 border-t border-slate-200 dark:border-slate-750 bg-white dark:bg-slate-850 flex items-center gap-2"
+          className="p-3 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center gap-2"
         >
           <input
             type="text"

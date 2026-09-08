@@ -241,7 +241,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
         </div>
 
         {/* Pilihan Kategori Pemasukan */}
-        <div className="bg-white dark:bg-slate-850 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-2.5">
+        <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xs space-y-2.5">
           <div className="flex items-center justify-between">
             <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Pilih Kategori Pemasukan
@@ -249,7 +249,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
             <button
               type="button"
               onClick={() => setIsAddCatModalOpen(true)}
-              className="text-xs font-bold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-md transition"
+              className="text-xs font-bold text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-md transition cursor-pointer"
             >
               <Plus size={13} />
               <span>Tambah Kategori</span>
@@ -268,10 +268,10 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                     setSelectedCategoryId(cat.id);
                     if (errors.category) setErrors((prev) => ({ ...prev, category: undefined }));
                   }}
-                  className={`p-3 rounded-xl border text-left transition relative flex flex-col justify-between active:scale-95 ${
+                  className={`p-3 rounded-xl border text-left transition relative flex flex-col justify-between active:scale-95 cursor-pointer ${
                     isSelected
-                      ? "border-emerald-600 bg-emerald-50/80 dark:bg-emerald-950/40 ring-2 ring-emerald-500"
-                      : "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800"
+                      ? "border-emerald-600 bg-emerald-50/80 dark:bg-emerald-950/50 ring-2 ring-emerald-500"
+                      : "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700"
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -302,7 +302,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
         </div>
 
         {/* Pilihan Aset Tujuan Masuk dengan Filter & Live Proyeksi Saldo */}
-        <div className="bg-white dark:bg-slate-850 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-3">
+        <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xs space-y-3">
           <div className="flex items-center justify-between">
             <div>
               <label className="block text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
@@ -409,7 +409,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
         </div>
 
         {/* Tanggal & Catatan & Tag */}
-        <div className="bg-white dark:bg-slate-850 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-3">
+        <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xs space-y-3">
           <div>
             <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
               Tanggal Diterima
@@ -465,7 +465,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
                   className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${
                     selectedTag === tag
                       ? "bg-emerald-600 text-white"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-750"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
                   }`}
                 >
                   #{tag}
@@ -522,7 +522,7 @@ export default function IncomeForm({ onSuccess, onFormChange }: IncomeFormProps)
       {/* Modal Tambah Kategori Kustom */}
       {isAddCatModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-2xl p-5 space-y-4 shadow-2xl border border-slate-100 dark:border-slate-700">
+          <div className="w-full max-w-sm bg-white dark:bg-slate-900 rounded-2xl p-5 space-y-4 shadow-2xl border border-slate-100 dark:border-slate-800">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
               <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                 Tambah Kategori Pemasukan

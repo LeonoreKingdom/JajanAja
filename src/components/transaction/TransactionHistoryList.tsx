@@ -45,7 +45,7 @@ export default function TransactionHistoryList({
   };
 
   return (
-    <div className="bg-white dark:bg-slate-850 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-3.5">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-slate-100 dark:border-slate-800 shadow-xs space-y-3.5">
       {/* Header & Filter */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">

@@ -67,7 +67,7 @@ Dicatat via JajanAja Teman Finansial`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-      <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] border dark:border-slate-700">
+      <div className="w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] border border-slate-100 dark:border-slate-800">
         {/* Header Resi Digital */}
         <div className="p-4 bg-slate-900 text-white flex items-center justify-between">
           <div className="flex items-center gap-2">

@@ -68,35 +68,35 @@ export default function RunningMonthSummary({
   const isOverBudget = categoryLimit > 0 && projectedCategorySpent > categoryLimit;
 
   return (
-    <div className="bg-white dark:bg-slate-850 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/80 shadow-xs space-y-3">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-slate-100 dark:border-slate-800 shadow-xs space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+          <div className="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
             <PieChart size={16} />
           </div>
           <div>
             <h2 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
               Ringkasan Bulan Berjalan
             </h2>
-            <p className="text-[10px] sm:text-[11px] text-slate-400 dark:text-slate-500">
+            <p className="text-[10px] sm:text-[11px] text-slate-400 dark:text-slate-400">
               September 2026
             </p>
           </div>
         </div>
 
-        <span className="text-[10px] font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 rounded-full border border-indigo-100 dark:border-indigo-800/60">
+        <span className="text-[10px] font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded-full border border-indigo-100 dark:border-indigo-800/60">
           Live Sync
         </span>
       </div>
 
       {/* Grid Status Bulan Berjalan */}
       <div className="grid grid-cols-2 gap-2 text-xs">
-        <div className="p-2.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/25 border border-emerald-100 dark:border-emerald-800/40">
+        <div className="p-2.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/60 border border-emerald-100 dark:border-emerald-800/80">
           <div className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-medium text-[11px]">
             <ArrowDownRight size={13} />
             <span>Pemasukan Terkumpul</span>
           </div>
-          <p className="font-black text-emerald-950 dark:text-emerald-200 text-xs sm:text-sm mt-0.5">
+          <p className="font-black text-emerald-950 dark:text-white text-xs sm:text-sm mt-0.5">
             {formatRupiah(projectedIncome)}
           </p>
           {!isExpense && inputAmount > 0 && (
@@ -106,12 +106,12 @@ export default function RunningMonthSummary({
           )}
         </div>
 
-        <div className="p-2.5 rounded-xl bg-rose-50/60 dark:bg-rose-950/25 border border-rose-100 dark:border-rose-800/40">
+        <div className="p-2.5 rounded-xl bg-rose-50/70 dark:bg-rose-950/60 border border-rose-100 dark:border-rose-800/80">
           <div className="flex items-center gap-1 text-rose-700 dark:text-rose-400 font-medium text-[11px]">
             <ArrowUpRight size={13} />
             <span>Pengeluaran Bulan Ini</span>
           </div>
-          <p className="font-black text-rose-950 dark:text-rose-200 text-xs sm:text-sm mt-0.5">
+          <p className="font-black text-rose-950 dark:text-white text-xs sm:text-sm mt-0.5">
             {formatRupiah(projectedExpense)}
           </p>
           {isExpense && inputAmount > 0 && (

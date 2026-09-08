@@ -79,7 +79,7 @@ export default function OptionalDetailsSection({
   ].filter(Boolean).length;
 
   return (
-    <div className="bg-white dark:bg-slate-850 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 overflow-hidden shadow-2xs transition-all">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-2xs transition-all">
       {/* Accordion Header */}
       <button
         type="button"
@@ -117,7 +117,7 @@ export default function OptionalDetailsSection({
 
       {/* Accordion Body Content */}
       {isOpen && (
-        <div className="p-4 pt-1 border-t border-slate-100 dark:border-slate-750 space-y-4 animate-in fade-in">
+        <div className="p-4 pt-1 border-t border-slate-100 dark:border-slate-800 space-y-4 animate-in fade-in">
           {/* 1. Merchant / Lokasi Toko */}
           <div>
             <label className="block text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1 flex items-center gap-1">
@@ -222,7 +222,7 @@ export default function OptionalDetailsSection({
                     className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${
                       isSelected
                         ? "bg-purple-600 text-white shadow-2xs"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-750"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
                     }`}
                   >
                     #{tag}
@@ -234,7 +234,7 @@ export default function OptionalDetailsSection({
 
           {/* 5. Checkbox Tambahan: Reimburse & Split Bill */}
           {type === "pengeluaran" && (
-            <div className="pt-2 border-t border-slate-100 dark:border-slate-750 space-y-2">
+            <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2">
               {setIsReimbursable && (
                 <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-700 dark:text-slate-300 font-medium select-none">
                   <input

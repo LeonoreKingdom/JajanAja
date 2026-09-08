@@ -31,7 +31,7 @@ export default function BudgetCategoryCard({
   const isWarning = persentase >= 75 && persentase < 90;
 
   return (
-    <div className="bg-white dark:bg-slate-850 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/80 shadow-xs hover:shadow-md transition space-y-3">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-slate-100 dark:border-slate-800 shadow-xs hover:shadow-md transition space-y-3">
       {/* Header Bar: Icon, Name, and Status Badge */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -121,7 +121,7 @@ export default function BudgetCategoryCard({
             {persentase}%
           </span>
         </div>
-        <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-750 overflow-hidden">
+        <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
           <div
             className={`h-full rounded-full transition-all duration-300 ${
               isOver

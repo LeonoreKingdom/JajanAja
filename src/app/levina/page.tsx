@@ -123,7 +123,7 @@ export default function LevinaChatPage() {
       {/* Modal Info Maskot LEVINA */}
       {showInfoModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xs bg-white dark:bg-slate-850 border dark:border-slate-700 rounded-3xl p-5 space-y-4 shadow-2xl text-center">
+          <div className="w-full max-w-xs bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-5 space-y-4 shadow-2xl text-center">
             <div className="w-14 h-14 rounded-2xl bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 flex items-center justify-center mx-auto text-3xl">
               🦊
             </div>
@@ -150,7 +150,7 @@ export default function LevinaChatPage() {
       {/* Modal Pengaturan & Reset Riwayat Chat Lokal */}
       {showResetModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xs bg-white dark:bg-slate-850 border dark:border-slate-700 rounded-3xl p-5 space-y-4 shadow-2xl">
+          <div className="w-full max-w-xs bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-5 space-y-4 shadow-2xl">
             <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto text-xl">
               💾
             </div>
@@ -259,7 +259,7 @@ export default function LevinaChatPage() {
                 className={`max-w-[82%] rounded-2xl p-3 text-xs leading-relaxed ${
                   isUser
                     ? "bg-purple-600 text-white rounded-br-xs shadow-xs"
-                    : "bg-white dark:bg-slate-850 text-slate-800 dark:text-slate-100 border border-slate-200/80 dark:border-slate-700/80 rounded-bl-xs shadow-2xs"
+                    : "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200/80 dark:border-slate-700 rounded-bl-xs shadow-2xs"
                 }`}
               >
                 <p className="whitespace-pre-wrap">{msg.text}</p>
@@ -402,7 +402,7 @@ export default function LevinaChatPage() {
             <div className="w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-950/60 flex items-center justify-center text-sm shrink-0 mt-1">
               🦊
             </div>
-            <div className="bg-white dark:bg-slate-850 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded-2xl rounded-bl-xs px-3 py-2 text-xs flex items-center gap-1.5 shadow-2xs">
+            <div className="bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded-2xl rounded-bl-xs px-3 py-2 text-xs flex items-center gap-1.5 shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" />
               <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-bounce [animation-delay:0.2s]" />
               <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-bounce [animation-delay:0.4s]" />

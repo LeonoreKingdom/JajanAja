@@ -104,7 +104,7 @@ export default function SplitBillDetailModal({
         </div>
       )}
 
-      <div className="w-full max-w-md bg-white dark:bg-slate-850 rounded-t-3xl sm:rounded-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border dark:border-slate-700 animate-in slide-in-from-bottom-4 sm:zoom-in-95">
+      <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-t-3xl sm:rounded-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-800 animate-in slide-in-from-bottom-4 sm:zoom-in-95">
         {/* Modal Header */}
         <div className="p-4 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between bg-slate-50/70 dark:bg-slate-800/60">
           <div className="space-y-0.5 min-w-0 pr-2">
@@ -215,14 +215,14 @@ export default function SplitBillDetailModal({
               </span>
             </div>
 
-            <div className="divide-y divide-slate-100 dark:divide-slate-750 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden bg-white dark:bg-slate-800 shadow-2xs">
+            <div className="divide-y divide-slate-100 dark:divide-slate-700 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden bg-white dark:bg-slate-800 shadow-2xs">
               {bill.peserta.map((peserta) => {
                 const isUser = peserta.nama.toLowerCase().includes("kamu");
 
                 return (
                   <div
                     key={peserta.id}
-                    className="p-3 flex items-center justify-between gap-2 hover:bg-slate-50/70 dark:hover:bg-slate-750 transition"
+                    className="p-3 flex items-center justify-between gap-2 hover:bg-slate-50/70 dark:hover:bg-slate-700 transition"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
                       <div

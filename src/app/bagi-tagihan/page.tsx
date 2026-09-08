@@ -241,7 +241,7 @@ export default function BagiTagihanPage() {
 
       {/* Daftar Kartu Bagi Tagihan */}
       {filteredBills.length === 0 ? (
-        <div className="bg-white dark:bg-slate-850 rounded-3xl p-8 border border-slate-200 dark:border-slate-700/80 text-center space-y-3">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 text-center space-y-3">
           <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto text-2xl">
             👥
           </div>
@@ -264,7 +264,7 @@ export default function BagiTagihanPage() {
             return (
               <div
                 key={bill.id}
-                className="bg-white dark:bg-slate-850 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 p-4 space-y-3 shadow-2xs hover:border-blue-200 dark:hover:border-blue-600/60 transition"
+                className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 p-4 space-y-3 shadow-2xs hover:border-blue-200 dark:hover:border-blue-600/60 transition"
               >
                 {/* Header Kartu */}
                 <div className="flex items-start justify-between gap-2">
@@ -320,7 +320,7 @@ export default function BagiTagihanPage() {
                       {percentPaid}%
                     </span>
                   </div>
-                  <div className="w-full bg-slate-100 dark:bg-slate-750 h-1.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
                     <div
                       className={`h-full transition-all duration-300 ${
                         percentPaid === 100 ? "bg-emerald-500" : "bg-blue-600"

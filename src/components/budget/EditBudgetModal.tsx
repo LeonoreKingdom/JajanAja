@@ -96,7 +96,7 @@ export default function EditBudgetModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-      <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto border dark:border-slate-700">
+      <div className="w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl p-5 space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto border border-slate-100 dark:border-slate-800">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
           <div className="flex items-center gap-2">

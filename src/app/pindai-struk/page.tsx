@@ -184,7 +184,7 @@ export default function PindaiStrukPage() {
       {/* Modal Notifikasi Sukses Simpan Transaksi Struk */}
       {isSuccessModalOpen && savedData && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-3xl p-6 text-center space-y-4 shadow-2xl border border-slate-100 dark:border-slate-700 animate-in zoom-in-95">
+          <div className="w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl p-6 text-center space-y-4 shadow-2xl border border-slate-100 dark:border-slate-800 animate-in zoom-in-95">
             <div className="w-16 h-16 rounded-3xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center mx-auto text-2xl shadow-xs">
               <CheckCircle2 size={32} />
             </div>

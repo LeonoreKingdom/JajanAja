@@ -85,7 +85,7 @@ export default function CreateAssetModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-      <div className="w-full max-w-sm bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto border dark:border-slate-700">
+      <div className="w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl p-5 space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto border border-slate-100 dark:border-slate-800">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
           <div className="flex items-center gap-2">
@@ -137,7 +137,7 @@ export default function CreateAssetModal({
                     className={`p-2.5 rounded-xl border text-center font-bold text-xs flex flex-col items-center gap-1.5 transition ${
                       isSelected
                         ? "border-blue-600 bg-blue-50/70 dark:bg-blue-950/40 text-blue-900 dark:text-blue-300 ring-2 ring-blue-500"
-                        : "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-750"
+                        : "border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                     }`}
                   >
                     <Icon size={16} />

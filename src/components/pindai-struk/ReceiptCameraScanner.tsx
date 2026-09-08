@@ -218,7 +218,7 @@ export default function ReceiptCameraScanner({
         <button
           type="button"
           onClick={onSwitchToUpload}
-          className="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 flex items-center justify-center shadow-xs transition active:scale-95"
+          className="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center justify-center shadow-xs transition active:scale-95"
           title="Galeri / File"
         >
           <ImageIcon size={20} />
@@ -239,7 +239,7 @@ export default function ReceiptCameraScanner({
         <button
           type="button"
           onClick={() => nativeInputRef.current?.click()}
-          className="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750 flex items-center justify-center shadow-xs transition active:scale-95"
+          className="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center justify-center shadow-xs transition active:scale-95"
           title="Kamera Bawaan"
         >
           <Camera size={20} />

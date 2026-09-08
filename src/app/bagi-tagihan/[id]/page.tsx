@@ -194,7 +194,7 @@ export default function DetailBagiTagihanPage() {
       {/* Modal Konfirmasi Hapus */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xs bg-white dark:bg-slate-850 rounded-3xl p-5 space-y-4 shadow-2xl text-center border border-slate-100 dark:border-slate-700">
+          <div className="w-full max-w-xs bg-white dark:bg-slate-900 rounded-3xl p-5 space-y-4 shadow-2xl text-center border border-slate-100 dark:border-slate-800">
             <div className="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto text-xl">
               <AlertTriangle size={24} />
             </div>
@@ -340,7 +340,7 @@ export default function DetailBagiTagihanPage() {
       )}
 
       {/* Daftar Rincian Peserta */}
-      <div className="bg-white dark:bg-slate-850 rounded-3xl p-4 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-3">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 border border-slate-200 dark:border-slate-800 shadow-2xs space-y-3">
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
           <div className="flex items-center gap-2">
             <Users size={16} className="text-blue-600 dark:text-blue-400" />
@@ -418,7 +418,7 @@ export default function DetailBagiTagihanPage() {
 
       {/* Catatan Tambahan */}
       {bill.catatan && (
-        <div className="bg-slate-50 dark:bg-slate-850 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+        <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-700 text-xs space-y-1">
           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
             Catatan Tambahan
           </span>

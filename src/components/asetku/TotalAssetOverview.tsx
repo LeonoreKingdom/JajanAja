@@ -86,7 +86,7 @@ export default function TotalAssetOverview({ assets }: TotalAssetOverviewProps) 
 
       {/* Rincian per Jenis Aset */}
       <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800/60 text-xs">
-        <div className="bg-slate-850/60 p-2 rounded-xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-slate-800/60 p-2 rounded-xl border border-slate-800 flex flex-col justify-between">
           <div className="flex items-center gap-1 text-[11px] text-blue-300 font-bold mb-1">
             <Building2 size={12} />
             <span>Bank ({bankPercent}%)</span>
@@ -96,7 +96,7 @@ export default function TotalAssetOverview({ assets }: TotalAssetOverviewProps) 
           </span>
         </div>
 
-        <div className="bg-slate-850/60 p-2 rounded-xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-slate-800/60 p-2 rounded-xl border border-slate-800 flex flex-col justify-between">
           <div className="flex items-center gap-1 text-[11px] text-emerald-300 font-bold mb-1">
             <Smartphone size={12} />
             <span>E-Wallet ({ewalletPercent}%)</span>
@@ -106,7 +106,7 @@ export default function TotalAssetOverview({ assets }: TotalAssetOverviewProps) 
           </span>
         </div>
 
-        <div className="bg-slate-850/60 p-2 rounded-xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-slate-800/60 p-2 rounded-xl border border-slate-800 flex flex-col justify-between">
           <div className="flex items-center gap-1 text-[11px] text-amber-300 font-bold mb-1">
             <Coins size={12} />
             <span>Tunai ({tunaiPercent}%)</span>

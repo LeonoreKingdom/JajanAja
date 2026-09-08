@@ -52,7 +52,7 @@ export default function Header({ user }: HeaderProps) {
           type="button"
           onClick={toggleTheme}
           aria-label={isDark ? "Beralih ke mode terang" : "Beralih ke mode gelap"}
-          className="relative w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-750 transition-all duration-150 shadow-xs"
+          className="relative w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-150 shadow-xs"
         >
           {isDark ? (
             <Sun size={18} className="text-amber-400 transition-transform rotate-0 scale-100" />
@@ -69,7 +69,7 @@ export default function Header({ user }: HeaderProps) {
         <button
           type="button"
           aria-label="Notifikasi"
-          className="relative w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-750 transition shadow-xs"
+          className="relative w-10 h-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-700 transition shadow-xs"
         >
           <Bell size={18} />
           <span className="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white dark:ring-slate-800"></span>

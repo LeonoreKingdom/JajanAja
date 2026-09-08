@@ -95,7 +95,7 @@ export default function TransactionModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-xs transition-opacity animate-in fade-in">
-      <div className="w-full max-w-lg bg-white dark:bg-slate-850 rounded-t-3xl sm:rounded-2xl shadow-xl overflow-hidden max-h-[90vh] flex flex-col border dark:border-slate-700">
+      <div className="w-full max-w-lg bg-white dark:bg-slate-900 rounded-t-3xl sm:rounded-2xl shadow-xl overflow-hidden max-h-[90vh] flex flex-col border border-slate-100 dark:border-slate-800">
         {/* Header Modal */}
         <div className="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-700">
           <div className="flex items-center gap-2">
@@ -156,7 +156,7 @@ export default function TransactionModal({
                     className={`flex items-center gap-2 p-2 rounded-xl border text-xs font-semibold transition text-left ${
                       isSelected
                         ? "border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 ring-1 ring-emerald-500"
-                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750"
+                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700"
                     }`}
                   >
                     <div
@@ -188,7 +188,7 @@ export default function TransactionModal({
                     className={`p-2.5 rounded-xl border text-xs font-semibold text-left transition ${
                       isSelected
                         ? "border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-300 ring-1 ring-emerald-500"
-                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-750"
+                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700"
                     }`}
                   >
                     <div className="font-bold truncate">{ast.nama}</div>
