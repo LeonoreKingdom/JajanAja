@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { Camera, MinusCircle, PlusCircle, Users } from "lucide-react";
+import { Camera, MessageSquare, MinusCircle, PlusCircle, Users } from "lucide-react";
 
 interface QuickActionsProps {
   onAddExpense?: () => void;
   onAddIncome?: () => void;
   onScanReceipt?: () => void;
   onSplitBill?: () => void;
+  onWhatsApp?: () => void;
 }
 
 export default function QuickActions({
@@ -15,6 +16,7 @@ export default function QuickActions({
   onAddIncome,
   onScanReceipt,
   onSplitBill,
+  onWhatsApp,
 }: QuickActionsProps) {
   const actions = [
     {
@@ -49,10 +51,18 @@ export default function QuickActions({
       bg: "bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/40 border-amber-100 dark:border-amber-900/30",
       onClick: onSplitBill,
     },
+    {
+      id: "whatsapp",
+      label: "WhatsApp",
+      sublabel: "Bot Chat",
+      icon: MessageSquare,
+      bg: "bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 hover:bg-teal-100 dark:hover:bg-teal-900/40 border-teal-100 dark:border-teal-900/30",
+      onClick: onWhatsApp,
+    },
   ];
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-100 dark:border-slate-700/80 shadow-xs transition-colors">
+    <div className="bg-white dark:bg-slate-800 rounded-2xl p-3.5 sm:p-4 border border-slate-100 dark:border-slate-700/80 shadow-xs transition-colors">
       <div className="flex items-center justify-between mb-3 px-1">
         <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
           Aksi Cepat
@@ -60,7 +70,7 @@ export default function QuickActions({
         <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">Sekali Tap</span>
       </div>
 
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
         {actions.map((act) => {
           const Icon = act.icon;
           return (
@@ -68,17 +78,17 @@ export default function QuickActions({
               key={act.id}
               onClick={act.onClick}
               type="button"
-              className="flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-100/80 dark:border-slate-700/60 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-all active:scale-95 group text-center"
+              className="flex flex-col items-center justify-center p-1.5 sm:p-2.5 rounded-xl border border-slate-100/80 dark:border-slate-700/60 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-all active:scale-95 group text-center cursor-pointer"
             >
               <div
-                className={`w-11 h-11 rounded-xl flex items-center justify-center mb-1.5 transition-transform group-hover:scale-105 ${act.bg}`}
+                className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-1 transition-transform group-hover:scale-105 ${act.bg}`}
               >
-                <Icon size={22} strokeWidth={2.2} />
+                <Icon size={20} strokeWidth={2.2} />
               </div>
-              <span className="text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight">
+              <span className="text-[11px] sm:text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight truncate w-full">
                 {act.label}
               </span>
-              <span className="text-[10px] text-slate-400 dark:text-slate-400 font-medium">
+              <span className="text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-400 font-medium truncate w-full hidden xs:block">
                 {act.sublabel}
               </span>
             </button>

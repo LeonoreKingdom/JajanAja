@@ -103,6 +103,10 @@ export default function DashboardPage() {
     router.push("/bagi-tagihan");
   };
 
+  const handleWhatsApp = () => {
+    router.push("/whatsapp");
+  };
+
   const handleSaveTransaction = async (newTx: {
     tipe: TransactionType;
     jumlah: number;
@@ -141,7 +145,7 @@ export default function DashboardPage() {
 
       {/* Header Profile - Mobile Only */}
       <div className="lg:hidden">
-        <Header user={activeUser} />
+        <Header user={user || undefined} />
       </div>
 
       {/* Ringkasan Saldo, Pengeluaran & Pemasukan (4-col on desktop, stacked on mobile) */}
@@ -162,6 +166,7 @@ export default function DashboardPage() {
             onAddIncome={handleOpenIncomeModal}
             onScanReceipt={handleScanReceipt}
             onSplitBill={handleSplitBill}
+            onWhatsApp={handleWhatsApp}
           />
           <MonthlyFinancialChart />
           <RecentTransactions
@@ -201,6 +206,7 @@ export default function DashboardPage() {
           onAddIncome={handleOpenIncomeModal}
           onScanReceipt={handleScanReceipt}
           onSplitBill={handleSplitBill}
+          onWhatsApp={handleWhatsApp}
         />
         <FinancialConditionSummary
           totalPemasukan={totalPemasukanBulanIni}
